@@ -8,7 +8,6 @@
     <!-- IMPORT FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Thêm font Lexend cho tiêu đề và Be Vietnam Pro cho UI -->
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Lexend:wght@700;900&family=Itim&family=Oswald:wght@700&family=Paytone+One&family=Spectral:wght@800&display=swap" rel="stylesheet">
 
     <style>
@@ -20,7 +19,7 @@
             --card-bg: #ffffff;
             --border-color: #e2e8f0;
             --main-bg-color: #f8fafc;
-            --header-height: 90px; /* [EDIT] Tăng chiều cao header (trước là 70px) */
+            --header-height: 90px;
         }
 
         /* --- THEME TỪNG TỔ --- */
@@ -41,14 +40,13 @@
             flex-direction: column;
         }
 
-        /* --- HEADER STYLES (MỚI) --- */
+        /* --- HEADER STYLES --- */
         .site-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: var(--header-height);
-            /* [EDIT] Hiệu ứng trong hơn 15% (0.9 -> 0.75) */
             background: rgba(255, 255, 255, 0.75); 
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -70,10 +68,9 @@
             text-decoration: none;
         }
         
-        /* [EDIT] Style cho ảnh logo vừa khít */
         .header-logo-img {
             height: auto;
-            max-height: 70%; /* Chiếm 70% chiều cao header để có khoảng thở */
+            max-height: 70%; 
             width: auto;
             object-fit: contain;
             display: block;
@@ -114,7 +111,7 @@
             width: 100%;
         }
 
-        /* --- FOOTER STYLES (MỚI) --- */
+        /* --- FOOTER STYLES --- */
         .site-footer {
             background-color: var(--primary-color);
             color: #cbd5e1;
@@ -169,7 +166,6 @@
             padding-left: 5px;
         }
 
-        /* [EDIT] Style cho khung góp ý */
         .feedback-box {
             width: 100%;
             padding: 10px;
@@ -263,7 +259,6 @@
 
         /* --- GROUP SECTIONS --- */
         .group-section {
-            /* [EDIT] Thu hẹp dải xám ngăn cách (trước là 60px) */
             margin-bottom: 20px; 
             max-width: 100%;
             padding: 60px 20px;
@@ -344,71 +339,68 @@
             z-index: 2;
         }
 
-        /* --- CARDS WRAPPER --- */
+        /* --- [EDIT] CARDS WRAPPER - GRID LAYOUT --- */
         .cards-wrapper {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            padding: 10px 0;
+            padding: 20px 0;
+            /* Thay padding-right bằng gap để tạo khoảng cách đều */
+            gap: 40px; 
         }
 
-        /* --- CARD CONTAINER --- */
+        /* --- [EDIT] CARD CONTAINER - CLEAN --- */
         .card-container {
             width: var(--card-width);
             height: var(--card-height);
             perspective: 1500px;
             cursor: pointer;
             position: relative;
-            margin: 10px;
+            /* Xóa margin âm để không bị chồng lên nhau */
+            margin: 0; 
             z-index: 1;
-            /* Thêm transition cho opacity để làm hiệu ứng hiện */
-            transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), 
+            /* Giữ các transition quan trọng, bỏ rotate */
+            transition: transform 0.4s ease, 
                         top 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), 
                         left 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), 
                         width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), 
                         height 0.6s cubic-bezier(0.25, 0.8, 0.25, 1),
-                        opacity 0.8s ease-out; /* Mới thêm */
+                        opacity 0.8s ease-out;
             will-change: transform, top, left, opacity;
+            /* Đảm bảo scale từ tâm */
+            transform-origin: center center;
         }
 
-        /* --- [NEW] CLASS ĐỂ ẨN CARD KHI CHƯA SCROLL TỚI --- */
         .scroll-hidden {
             opacity: 0;
-            /* Đẩy xuống dưới 60px và scale nhỏ xíu để tạo hiệu ứng bung lên */
-            transform: translateY(60px) scale(0.9) !important; 
+            transform: translateY(60px) scale(0.95);
             pointer-events: none;
         }
 
         .card-placeholder {
             width: var(--card-width);
             height: var(--card-height);
-            margin: 10px;
+            /* Xóa margin âm của placeholder */
+            margin: 0;
             visibility: hidden; 
             pointer-events: none;
             flex-shrink: 0;
         }
 
-        /* --- DESKTOP STYLES --- */
+        /* --- [EDIT] DESKTOP STYLES - REMOVED MESSY ROTATION --- */
         @media (min-width: 769px) {
-            .cards-wrapper { padding-right: 150px; }
-            .card-container { margin-right: -150px; }
-            .card-placeholder { margin-right: -150px; }
-
-            .card-container:hover {
-                z-index: 100;
-                transform: translateY(-20px) rotate(0deg) scale(1.05); 
-            }
-
-            .card-container:nth-child(odd) { transform: rotate(-2deg); }
-            .card-container:nth-child(even) { transform: rotate(2deg); }
+            /* Xóa các quy tắc xoay và margin âm gây lộn xộn */
             
-            .card-container:nth-child(odd):hover { transform: translateY(-20px) rotate(-3deg) scale(1.05); }
-            .card-container:nth-child(even):hover { transform: translateY(-20px) rotate(3deg) scale(1.05); }
+            /* Hiệu ứng Hover đơn giản, sạch sẽ */
+            .card-container:hover {
+                z-index: 10;
+                transform: translateY(-10px); /* Chỉ bay lên nhẹ */
+                box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            }
         }
 
         /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 768px) {
-            /* Header Mobile Adjustments */
             .site-header {
                 flex-direction: column;
                 height: auto;
@@ -416,16 +408,13 @@
                 gap: 15px;
             }
             
-            /* Logo mobile vẫn giữ max-height nhưng nhỏ hơn */
-            .header-logo-img {
-                max-height: 50px; 
-            }
+            .header-logo-img { max-height: 50px; }
 
             .main-nav {
                 width: 100%;
                 justify-content: center;
                 gap: 15px;
-                flex-wrap: wrap; /* Cho phép xuống dòng nếu nhiều mục */
+                flex-wrap: wrap; 
             }
 
             .nav-link {
@@ -434,12 +423,11 @@
                 background: #f1f5f9;
                 border-radius: 6px;
             }
-            .nav-link::after { display: none; } /* Bỏ gạch chân trên mobile cho gọn */
+            .nav-link::after { display: none; } 
 
-            /* Content Adjustments */
-            body { padding-top: 130px; } /* Header mobile cao hơn chút vì wrap */
+            body { padding-top: 130px; } 
             .cover-container { height: 250px; }
-            .class-title-main { font-size: 2.2rem; } /* Font mới điều chỉnh size mobile */
+            .class-title-main { font-size: 2.2rem; } 
             .group-section { padding: 40px 10px; }
             .group-title-text { margin-bottom: 30px; font-size: 3rem; }
 
@@ -448,40 +436,44 @@
                 align-items: center;
                 justify-content: center;
                 flex-wrap: nowrap; 
-                padding-left: 0;
+                padding: 0; /* Reset padding */
                 padding-bottom: 20px;
-                padding-right: 0; 
+                gap: 30px; /* Khoảng cách mobile */
             }
 
+            /* [EDIT] Mobile: Xóa rotate để thẳng hàng */
             .card-container {
-                margin-right: 0 !important;
-                margin-left: 0;
-                margin-bottom: 30px; 
+                margin: 0 !important;
+                margin-bottom: 10px; 
                 left: auto;
                 right: auto;
+                transform: none; /* Đảm bảo không xoay trên mobile */
             }
+            
             .card-placeholder {
-                margin-right: 0 !important;
-                margin-left: 0;
+                margin: 0 !important;
                 margin-bottom: 30px;
             }
-            .card-container:nth-child(odd) { transform: scale(0.9) rotate(-1.5deg); }
-            .card-container:nth-child(even) { transform: scale(0.9) rotate(1.5deg); }
 
-            .card-container:hover,
-            .card-container:nth-child(odd):hover, 
-            .card-container:nth-child(even):hover { z-index: 1; }
+            /* Xóa hiệu ứng xoay so le cũ */
+            .card-container:nth-child(odd) { transform: none; }
+            .card-container:nth-child(even) { transform: none; }
 
-            /* Footer Mobile [EDIT] - Đã sửa lỗi căn giữa kì cục */
+            .card-container:hover {
+                transform: translateY(-5px);
+                z-index: 10;
+            }
+
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
-                text-align: left; /* [MỚI] Căn trái giống PC */
+                text-align: left; 
             }
-            .footer-desc { margin: 0; } /* [MỚI] Bỏ căn giữa margin */
+            .footer-desc { margin: 0; } 
         }
 
         @media (max-width: 500px) {
+            /* Logic scale cho màn hình cực nhỏ khi click */
             .card-container.is-focused {
                 width: var(--card-width) !important;
                 height: var(--card-height) !important;
@@ -779,17 +771,17 @@
 
         @media (min-width: 1600px) {
             .group-content-container { max-width: 1600px; }
-            .card-container { margin-right: -100px; } 
-            .card-placeholder { margin-right: -100px; }
+            /* Bỏ margin âm trên màn hình lớn */
+            .card-container { margin-right: 0; } 
+            .card-placeholder { margin-right: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- --- [MỚI] HEADER SECTION --- -->
+    <!-- HEADER SECTION -->
     <header class="site-header">
         <a href="#" class="header-logo">
-            <!-- [EDIT] Đổi sang thẻ img để bạn tự thêm ảnh. Ảnh placeholder hiện tại. -->
             <img src="image/logo.png" alt="Logo 12A2" class="header-logo-img" onerror="this.style.display='none'; this.parentElement.innerHTML='A2<span>K28</span>';">
         </a>
         <nav class="main-nav">
@@ -817,7 +809,7 @@
         <!-- Content will be injected by JS -->
     </div>
 
-    <!-- --- [MỚI] FOOTER SECTION --- -->
+    <!-- FOOTER SECTION -->
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-column">
@@ -827,7 +819,6 @@
                 </p>
             </div>
             
-            <!-- [EDIT] Cập nhật Liên kết nhanh giống Header -->
             <div class="footer-column">
                 <h3>LIÊN KẾT NHANH</h3>
                 <ul class="footer-links">
@@ -839,7 +830,6 @@
                 </ul>
             </div>
             
-            <!-- [EDIT] Sửa phần Liên hệ & Thêm khung góp ý -->
             <div class="footer-column">
                 <h3>LIÊN HỆ</h3>
                 <ul class="footer-links">
@@ -852,7 +842,6 @@
                 </div>
             </div>
         </div>
-        <!-- [EDIT] Sửa năm copyright -->
         <div class="footer-bottom">
             &copy; 2023 - 2026 12A2 K28. All rights reserved. Made with love.
         </div>
@@ -1068,7 +1057,6 @@
 
         function createCard(data, index) {
             const container = document.createElement('div');
-            // Thêm class 'scroll-hidden' vào ban đầu
             container.className = 'card-container scroll-hidden';
             
             // Có thể dùng delay nếu muốn hiệu ứng so le (optional)
@@ -1260,24 +1248,20 @@
 
         renderCards();
 
-        // --- [NEW] SCROLL OBSERVER LOGIC ---
-        // Thiết lập Intersection Observer để quan sát các thẻ
+        // --- SCROLL OBSERVER LOGIC ---
         const observerOptions = {
-            threshold: 0.15 // Khi 15% thẻ xuất hiện thì kích hoạt
+            threshold: 0.15 
         };
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Xóa class ẩn để thẻ hiện ra và chạy transition
                     entry.target.classList.remove('scroll-hidden');
-                    // Chỉ chạy hiệu ứng 1 lần
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Bắt đầu quan sát tất cả các thẻ card-container
         document.querySelectorAll('.card-container').forEach(card => {
             observer.observe(card);
         });
