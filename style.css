@@ -1,4 +1,4 @@
-/* --- GLOBAL VARIABLES --- */
+/* --- GLOBAL VARIABLES (Desktop Optimized) --- */
 :root {
     --card-width: 450px;
     --card-height: 280px;
@@ -10,7 +10,7 @@
 
     /* Music Disk Variables */
     --disk-size: 240px; 
-    --disk-mobile-size: 200px;
+    /* Đã xóa biến --disk-mobile-size */
 }
 
 /* --- THEME TỪNG TỔ --- */
@@ -374,53 +374,12 @@ body {
     flex-shrink: 0;
 }
 
-@media (min-width: 769px) {
-    .card-container:hover {
-        z-index: 10;
-        transform: translateY(-10px); 
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        border-radius: 16px;
-    }
-}
-
-@media (max-width: 768px) {
-    .site-header { flex-direction: column; height: auto; padding: 15px 20px; gap: 15px; }
-    .header-logo-img { max-height: 50px; }
-    .main-nav { width: 100%; justify-content: center; gap: 15px; flex-wrap: wrap; }
-    .nav-link { font-size: 12px; padding: 5px 8px; background: #f1f5f9; border-radius: 6px; }
-    .nav-link::after { display: none; } 
-    body { padding-top: 130px; } 
-    .cover-container { height: 250px; }
-    .class-title-main { font-size: 2.2rem; } 
-    .group-section { padding: 40px 10px; }
-    .group-title-text { margin-bottom: 30px; font-size: 3rem; }
-    .cards-wrapper { flex-direction: column; align-items: center; justify-content: center; flex-wrap: nowrap; padding: 0; padding-bottom: 20px; gap: 30px; }
-    
-    /* --- SỬA LỖI TRÀN MÀN HÌNH Ở ĐÂY --- */
-    .card-container { 
-        width: 90%; /* Co giãn theo màn hình */
-        max-width: 450px; /* Giới hạn chiều rộng tối đa */
-        margin: 0 !important; 
-        margin-bottom: 10px; 
-        left: auto; 
-        right: auto; 
-        transform: none; 
-    }
-    
-    .card-placeholder { margin: 0 !important; margin-bottom: 30px; }
-    .card-container:nth-child(odd) { transform: none; }
-    .card-container:nth-child(even) { transform: none; }
-    .card-container:hover { transform: translateY(-5px); z-index: 10; }
-    .footer-content { grid-template-columns: 1fr; gap: 30px; text-align: left; }
-    .footer-desc { margin: 0; } 
-}
-
-@media (max-width: 500px) {
-    .card-container.is-focused {
-        width: var(--card-width) !important;
-        height: var(--card-height) !important;
-        transform: translate(-50%, -50%) scale(calc((100vw - 40px) / 450)) !important;
-    }
+/* Hiệu ứng hover chỉ dành cho Desktop */
+.card-container:hover {
+    z-index: 10;
+    transform: translateY(-10px); 
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-radius: 16px;
 }
 
 /* --- CARD INTERNALS (3D LOGIC) --- */
@@ -446,7 +405,6 @@ body {
     transform: rotateY(180deg);
 }
 
-/* --- SỬA LỖI ĐĨA NẰM MẶT SAU: TẠO KHÔNG GIAN 3D RÕ RÀNG --- */
 .card-face {
     position: absolute;
     width: 100%;
@@ -555,25 +513,14 @@ body {
 .disk-body.spinning { animation: spinRecord 6s linear infinite; }
 .disk-body.paused { animation-play-state: paused; }
 
+/* Trạng thái Disk khi chơi nhạc (CHỈ DESKTOP: Trồi sang phải) */
 .card-container.is-focused .disk-container.state-playing {
     transform: translate(50%, -50%) translateZ(0); 
 }
 
+/* Trạng thái Disk khi tạm dừng (CHỈ DESKTOP: Thụt vào một chút) */
 .card-container.is-focused .disk-container.state-retracted {
     transform: translate(20%, -50%) translateZ(0); 
-}
-
-@media (max-width: 768px) {
-    .disk-container {
-        width: var(--disk-mobile-size);
-        height: var(--disk-mobile-size);
-    }
-    .card-container.is-focused .disk-container.state-playing {
-        transform: translate(-50%, -60%) translateZ(0); 
-    }
-    .card-container.is-focused .disk-container.state-retracted {
-        transform: translate(-50%, -45%) translateZ(0);
-    }
 }
 
 .zodiac-bg {
@@ -823,10 +770,4 @@ body {
     0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
     40% { transform: translate(-50%, 5px); }
     60% { transform: translate(-50%, 3px); }
-}
-
-@media (min-width: 1600px) {
-    .group-content-container { max-width: 1600px; }
-    .card-container { margin-right: 0; } 
-    .card-placeholder { margin-right: 0; }
 }
