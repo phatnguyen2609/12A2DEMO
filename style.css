@@ -265,9 +265,13 @@ body {
 /* --- THEME COLORS & FONTS --- */
 .season-spring {
     background-color: #fdf2f8;
-    background-image: radial-gradient(#fbcfe8 15%, transparent 16%), radial-gradient(#fbcfe8 15%, transparent 16%);
-    background-size: 60px 60px;
-    background-position: 0 0, 30px 30px;
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(251, 207, 232, 0.3) 20px, 
+        rgba(251, 207, 232, 0.3) 40px  
+    );
 }
 .group-font-1 {
     font-family: 'Itim', cursive;
@@ -276,8 +280,10 @@ body {
 
 .season-summer {
     background-color: #f0fdf4;
-    background-image: radial-gradient(circle, rgba(250, 204, 21, 0.15) 2px, transparent 2.5px);
-    background-size: 30px 30px;
+    background-image: 
+        linear-gradient(to right, rgba(250, 204, 21, 0.2) 2px, transparent 1px),
+        linear-gradient(to bottom, rgba(250, 204, 21, 0.2) 2px, transparent 1px);
+    background-size: 35px 35px;
 }
 .group-font-2 {
     font-family: 'Paytone One', sans-serif;
@@ -350,7 +356,6 @@ body {
                 width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), 
                 height 0.6s cubic-bezier(0.25, 0.8, 0.25, 1),
                 opacity 0.8s ease-out;
-    will-change: transform, top, left, opacity;
     transform-origin: center center;
 }
 
@@ -390,7 +395,18 @@ body {
     .group-section { padding: 40px 10px; }
     .group-title-text { margin-bottom: 30px; font-size: 3rem; }
     .cards-wrapper { flex-direction: column; align-items: center; justify-content: center; flex-wrap: nowrap; padding: 0; padding-bottom: 20px; gap: 30px; }
-    .card-container { margin: 0 !important; margin-bottom: 10px; left: auto; right: auto; transform: none; }
+    
+    /* --- SỬA LỖI TRÀN MÀN HÌNH Ở ĐÂY --- */
+    .card-container { 
+        width: 90%; /* Co giãn theo màn hình */
+        max-width: 450px; /* Giới hạn chiều rộng tối đa */
+        margin: 0 !important; 
+        margin-bottom: 10px; 
+        left: auto; 
+        right: auto; 
+        transform: none; 
+    }
+    
     .card-placeholder { margin: 0 !important; margin-bottom: 30px; }
     .card-container:nth-child(odd) { transform: none; }
     .card-container:nth-child(even) { transform: none; }
@@ -435,23 +451,21 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* Quan trọng: ẩn mặt sau */
+    backface-visibility: hidden; 
     border-radius: 16px; 
-    background: var(--card-bg); /* Phải có màu nền để che đĩa */
+    background: var(--card-bg); 
     border: 1px solid var(--border-color);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     overflow: hidden; 
-    z-index: 10; /* Cao hơn đĩa */
+    z-index: 10; 
 }
 
-/* Đẩy mặt trước lên 1px để tạo khoảng trống cho đĩa */
 .card-front { 
     transform: translateZ(1px); 
 }
 
-/* Đẩy mặt sau lên 1px (theo hướng quay) để kẹp đĩa ở giữa */
 .card-back {
     transform: rotateY(180deg) translateZ(1px);
     padding: 0;
@@ -459,7 +473,7 @@ body {
     overflow: hidden; 
 }
 
-/* --- MUSIC DISK STYLES (UPDATED) --- */
+/* --- MUSIC DISK STYLES --- */
 .disk-container {
     position: absolute;
     width: var(--disk-size);
@@ -486,30 +500,21 @@ body {
     pointer-events: auto;
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     overflow: hidden;
-    
-    /* 1. Base Color: Sử dụng biến để có thể đổi màu bằng JS */
-    /* Mặc định là màu đen (#111) nếu không set biến */
     background-color: var(--disk-color, #111);
-
-    /* 2. Hiệu ứng Visual (Vân & Bóng) */
     background-image: 
-        /* Lớp trên: Hiệu ứng chiếu sáng (Sheen/Reflection) */
-        /* Dùng conic-gradient để tạo vệt sáng hình cánh bướm/chữ V */
         conic-gradient(
             from 0deg,
             transparent 0deg,
             rgba(255, 255, 255, 0.05) 20deg,
-            rgba(255, 255, 255, 0.35) 45deg, /* Điểm sáng nhất */
+            rgba(255, 255, 255, 0.35) 45deg, 
             rgba(255, 255, 255, 0.05) 70deg,
             transparent 90deg,
             transparent 180deg,
             rgba(255, 255, 255, 0.05) 200deg,
-            rgba(255, 255, 255, 0.35) 225deg, /* Điểm sáng nhất đối diện */
+            rgba(255, 255, 255, 0.35) 225deg, 
             rgba(255, 255, 255, 0.05) 250deg,
             transparent 270deg
         ),
-        /* Lớp dưới: Vân đĩa (Grooves) */
-        /* Dùng màu đen bán trong suốt đè lên màu nền */
         repeating-radial-gradient(
             rgba(0,0,0,0.85) 0, 
             rgba(0,0,0,0.85) 2px, 
@@ -518,21 +523,17 @@ body {
         );
 }
 
-/* Đã xóa .disk-body::before cũ vì không còn cần thiết cho hiệu ứng mới */
-
 .disk-label {
     width: 42%;
     height: 42%;
     border-radius: 50%;
     position: relative;
-    /* Z-index cao hơn background của disk-body nên bóng không đè lên hình */
     z-index: 2; 
     background-size: cover;
     background-position: center;
     border: 2px solid rgba(255,255,255,0.1);
 }
 
-/* Center Hole */
 .disk-hole {
     width: 16px;
     height: 16px;
@@ -554,7 +555,6 @@ body {
 .disk-body.spinning { animation: spinRecord 6s linear infinite; }
 .disk-body.paused { animation-play-state: paused; }
 
-/* Disk Position States */
 .card-container.is-focused .disk-container.state-playing {
     transform: translate(50%, -50%) translateZ(0); 
 }
@@ -575,7 +575,6 @@ body {
         transform: translate(-50%, -45%) translateZ(0);
     }
 }
-/* --- END MUSIC DISK STYLES --- */
 
 .zodiac-bg {
     position: absolute;
@@ -623,21 +622,28 @@ body {
 .photo-area {
     width: 105px;
     height: 140px;
-    flex-shrink: 0;
-    background-color: #f1f5f9;
+    flex-shrink: 0; 
     border-radius: 12px;
-    border: 1px dashed #cbd5e1;
+    background-color: rgba(255, 255, 255, 0.3); 
+    border: none; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
 }
 
 .photo-area img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateZ(0); 
+}
+
+.card-container:hover .photo-area img,
+.card-container.is-focused .photo-area img {
+    transform: scale(1.1); 
 }
 
 .info-area {

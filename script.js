@@ -131,7 +131,7 @@ const membersData = [
       dob: "06/06/2008", keywords: ["Lúc này lúc kia", "nghiêm túc", "hề hước"],
       bio: "Ba năm cấp ba của tớ đóng gói rất nhiều kỉ niệm đáng nhớ, thực sự là không thể nào quên luôn. Đây cũng là khoảng thời gian giúp tớ trưởng thành hơn nhờ những trải nghiệm đắt giá có 1 0 2 với những người bạn xuất sắc, có chung đam mê, chung chí hướng. Hơn nữa, những người anh, người chị nhiệt huyết cùng những người lái đò tận tâm với nghề ở ngôi trường này đã cầm đuốc dẫn đường không chỉ tớ mà rất nhiều thế hệ trẻ ở đây, giúp tớ học được rất nhiều thứ bổ ích, vạch rõ hơn con đường tương lai sau này." },
     
-    { group: 4, name: "Nguyễn Thanh Thảo", role: "", img: "image/avatars/NTT.jpg", dob: "", keywords: [], bio: "" },
+    { group: 4, name: "Nguyễn Thanh Thảo", role: "", img: "image/avatars/NTT.jpg", dob: "28/01/2008", keywords: ["anti-social", "anti-capitalism", "FREE PALESTINE 🇵🇸🍉"], bio: "Mình vẽ gay" },
     
     { group: 4, name: "Đặng An Ninh", role: "", img: "image/avatars/ĐAN.jpg", 
       dob: "14/07/2008", keywords: ["Vui vẻ", "Hòa đồng", "Tốt bụng"], 
@@ -518,7 +518,7 @@ renderCards();
 
 // --- SCROLL OBSERVER LOGIC ---
 const observerOptions = {
-    threshold: 0.15 
+    threshold: 0.01 
 };
 
 const observer = new IntersectionObserver((entries, observer) => {
