@@ -10,7 +10,7 @@
 
     /* Music Disk Variables */
     --disk-size: 240px; 
-    --disk-mobile-size: 180px; 
+    --disk-mobile-size: 200px;
 }
 
 /* --- THEME TỪNG TỔ --- */
@@ -26,11 +26,9 @@ body {
     padding: 0; 
     padding-top: var(--header-height);
     min-height: 100vh;
-    overflow-x: hidden; /* Chặn cuộn ngang tuyệt đối */
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    position: relative;
-    width: 100%;
 }
 
 /* --- HEADER STYLES --- */
@@ -40,7 +38,7 @@ body {
     left: 0;
     width: 100%;
     height: var(--header-height);
-    background: rgba(255, 255, 255, 0.95); /* Tăng độ đậm nền để che nội dung khi cuộn */
+    background: rgba(255, 255, 255, 0.75); 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -83,7 +81,6 @@ body {
     letter-spacing: 0.5px;
     transition: color 0.2s;
     position: relative;
-    white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -268,23 +265,43 @@ body {
 /* --- THEME COLORS & FONTS --- */
 .season-spring {
     background-color: #fdf2f8;
-    background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(251, 207, 232, 0.3) 20px, rgba(251, 207, 232, 0.3) 40px);
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(251, 207, 232, 0.3) 20px, 
+        rgba(251, 207, 232, 0.3) 40px  
+    );
 }
-.group-font-1 { font-family: 'Itim', cursive; color: #db2777; }
+.group-font-1 {
+    font-family: 'Itim', cursive;
+    color: #db2777;
+}
 
 .season-summer {
     background-color: #f0fdf4;
-    background-image: linear-gradient(to right, rgba(250, 204, 21, 0.2) 2px, transparent 1px), linear-gradient(to bottom, rgba(250, 204, 21, 0.2) 2px, transparent 1px);
+    background-image: 
+        linear-gradient(to right, rgba(250, 204, 21, 0.2) 2px, transparent 1px),
+        linear-gradient(to bottom, rgba(250, 204, 21, 0.2) 2px, transparent 1px);
     background-size: 35px 35px;
 }
-.group-font-2 { font-family: 'Paytone One', sans-serif; color: #059669; }
+.group-font-2 {
+    font-family: 'Paytone One', sans-serif;
+    color: #059669;
+}
 
 .season-autumn {
     background-color: #fff7ed;
-    background-image: linear-gradient(135deg, #ffedd5 25%, transparent 25%), linear-gradient(225deg, #ffedd5 25%, transparent 25%);
+    background-image: linear-gradient(135deg, #ffedd5 25%, transparent 25%), linear-gradient(225deg, #ffedd5 25%, transparent 25%), linear-gradient(45deg, #ffedd5 25%, transparent 25%), linear-gradient(315deg, #ffedd5 25%, transparent 25%);
+    background-position:  10px 0, 10px 0, 0 0, 0 0;
     background-size: 40px 40px;
+    background-repeat: repeat;
 }
-.group-font-3 { font-family: 'Spectral', serif; color: #d97706; font-style: italic; }
+.group-font-3 {
+    font-family: 'Spectral', serif;
+    color: #d97706;
+    font-style: italic;
+}
 
 .season-winter {
     background-color: #f1f5f9;
@@ -292,7 +309,11 @@ body {
     background-position: 0 0, 50px 50px;
     background-size: 100px 100px;
 }
-.group-font-4 { font-family: 'Oswald', sans-serif; color: #475569; text-transform: uppercase; }
+.group-font-4 {
+    font-family: 'Oswald', sans-serif;
+    color: #475569;
+    text-transform: uppercase;
+}
 
 .group-title-text {
     text-align: center;
@@ -300,7 +321,7 @@ body {
     margin-top: 0;
     line-height: 1.2;
     font-size: clamp(3.5rem, 8vw, 7rem); 
-    text-shadow: 2px 2px 0px rgba(255,255,255, 0.8);
+    text-shadow: 2px 2px 0px rgba(255,255,255, 0.8), 4px 4px 10px rgba(0,0,0,0.05);
     position: relative;
     z-index: 2;
 }
@@ -320,7 +341,7 @@ body {
     gap: 40px; 
 }
 
-/* --- CARD CONTAINER (CƠ BẢN) --- */
+/* --- CARD CONTAINER --- */
 .card-container {
     width: var(--card-width);
     height: var(--card-height);
@@ -329,8 +350,12 @@ body {
     position: relative;
     margin: 0; 
     z-index: 1;
-    /* Transition chuẩn cho desktop */
-    transition: transform 0.4s ease, opacity 0.8s ease-out;
+    transition: transform 0.4s ease, 
+                top 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                left 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                height 0.6s cubic-bezier(0.25, 0.8, 0.25, 1),
+                opacity 0.8s ease-out;
     transform-origin: center center;
 }
 
@@ -349,7 +374,6 @@ body {
     flex-shrink: 0;
 }
 
-/* --- DESKTOP LOGIC (GIỮ NGUYÊN) --- */
 @media (min-width: 769px) {
     .card-container:hover {
         z-index: 10;
@@ -357,100 +381,46 @@ body {
         box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         border-radius: 16px;
     }
-    
-    .card-container.is-focused {
-        position: fixed;
-        z-index: 9999 !important;
-        margin: 0 !important;
-        box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-    }
 }
 
-/* --- MOBILE & TABLET LOGIC (SỬA LỖI MẠNH TAY) --- */
 @media (max-width: 768px) {
-    /* 1. HEADER FIX: Gọn gàng, không bị tràn */
-    .site-header { 
-        flex-direction: column; 
-        height: auto; 
-        padding: 8px 10px; 
-        gap: 8px; 
-    }
-    .header-logo-img { 
-        max-height: 40px; 
-    }
-    .main-nav { 
-        width: 100%; 
-        justify-content: center; 
-        gap: 6px; 
-        flex-wrap: wrap; 
-    }
-    .nav-link { 
-        font-size: 11px; 
-        padding: 5px 10px; 
-        background: #f1f5f9; 
-        border-radius: 6px; 
-        border: 1px solid #e2e8f0;
-    }
+    .site-header { flex-direction: column; height: auto; padding: 15px 20px; gap: 15px; }
+    .header-logo-img { max-height: 50px; }
+    .main-nav { width: 100%; justify-content: center; gap: 15px; flex-wrap: wrap; }
+    .nav-link { font-size: 12px; padding: 5px 8px; background: #f1f5f9; border-radius: 6px; }
     .nav-link::after { display: none; } 
+    body { padding-top: 130px; } 
+    .cover-container { height: 250px; }
+    .class-title-main { font-size: 2.2rem; } 
+    .group-section { padding: 40px 10px; }
+    .group-title-text { margin-bottom: 30px; font-size: 3rem; }
+    .cards-wrapper { flex-direction: column; align-items: center; justify-content: center; flex-wrap: nowrap; padding: 0; padding-bottom: 20px; gap: 30px; }
     
-    body { padding-top: 120px; } 
-
-    /* 2. LAYOUT FIX */
-    .cover-container { height: 200px; }
-    .class-title-main { font-size: 1.8rem; } 
-    .group-section { padding: 30px 10px; }
-    .group-title-text { margin-bottom: 25px; font-size: 2.5rem; }
-    
-    .cards-wrapper { 
-        flex-direction: column; 
-        align-items: center; 
-        padding-bottom: 20px; 
-        gap: 20px; 
-    }
-    
-    /* 3. CARD LIST (Trạng thái bình thường trên list) */
+    /* --- SỬA LỖI TRÀN MÀN HÌNH Ở ĐÂY --- */
     .card-container { 
-        width: 90% !important; /* Đảm bảo luôn vừa màn hình */
-        max-width: 400px !important; 
-        height: auto !important;
-        aspect-ratio: 450 / 280;
-        margin: 0 !important;
-        margin-bottom: 15px !important; /* Khoảng cách giữa các thẻ */
-        
-        /* Reset hết vị trí do JS tính sai */
-        transform: none !important; 
-        left: auto !important;
-        top: auto !important;
-        position: relative !important; 
+        width: 90%; /* Co giãn theo màn hình */
+        max-width: 450px; /* Giới hạn chiều rộng tối đa */
+        margin: 0 !important; 
+        margin-bottom: 10px; 
+        left: auto; 
+        right: auto; 
+        transform: none; 
     }
     
-    .card-placeholder { display: none !important; } 
-
-    /* 4. CARD FOCUSED (FIX LỖI NHẢY LUNG TUNG KHI BẤM VÀO) */
-    .card-container.is-focused {
-        /* Bắt buộc dùng Fixed để căn giữa màn hình */
-        position: fixed !important; 
-        z-index: 10000 !important; /* Cao hơn tất cả */
-        
-        /* Căn giữa tuyệt đối */
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        
-        /* Kích thước khi mở lên */
-        width: 90vw !important; 
-        max-width: 420px !important; /* Giới hạn không quá to */
-        height: auto !important;
-        aspect-ratio: 450 / 280;
-        
-        /* Xóa margin để tránh bị lệch tâm */
-        margin: 0 !important;
-        
-        box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-    }
-    
-    /* 5. Footer Fix */
+    .card-placeholder { margin: 0 !important; margin-bottom: 30px; }
+    .card-container:nth-child(odd) { transform: none; }
+    .card-container:nth-child(even) { transform: none; }
+    .card-container:hover { transform: translateY(-5px); z-index: 10; }
     .footer-content { grid-template-columns: 1fr; gap: 30px; text-align: left; }
+    .footer-desc { margin: 0; } 
+}
+
+@media (max-width: 500px) {
+    .card-container.is-focused {
+        width: var(--card-width) !important;
+        height: var(--card-height) !important;
+        transform: translate(-50%, -50%) scale(calc((100vw - 40px) / 450)) !important;
+    }
 }
 
 /* --- CARD INTERNALS (3D LOGIC) --- */
@@ -464,10 +434,19 @@ body {
     border-radius: 16px;
 }
 
+.card-container.is-focused {
+    position: fixed;
+    z-index: 9999 !important;
+    margin: 0 !important; 
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    border-radius: 16px;
+}
+
 .card-container.is-focused.is-flipped .card-inner {
     transform: rotateY(180deg);
 }
 
+/* --- SỬA LỖI ĐĨA NẰM MẶT SAU: TẠO KHÔNG GIAN 3D RÕ RÀNG --- */
 .card-face {
     position: absolute;
     width: 100%;
@@ -483,7 +462,9 @@ body {
     z-index: 10; 
 }
 
-.card-front { transform: translateZ(1px); }
+.card-front { 
+    transform: translateZ(1px); 
+}
 
 .card-back {
     transform: rotateY(180deg) translateZ(1px);
@@ -499,8 +480,10 @@ body {
     height: var(--disk-size);
     top: 50%;
     left: 50%;
+    
     transform: translate(-50%, -50%) translateZ(0); 
     z-index: 5; 
+    
     pointer-events: none; 
     transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -519,8 +502,25 @@ body {
     overflow: hidden;
     background-color: var(--disk-color, #111);
     background-image: 
-        conic-gradient(from 0deg, transparent 0deg, rgba(255, 255, 255, 0.05) 20deg, rgba(255, 255, 255, 0.35) 45deg, rgba(255, 255, 255, 0.05) 70deg, transparent 90deg, transparent 180deg, rgba(255, 255, 255, 0.05) 200deg, rgba(255, 255, 255, 0.35) 225deg, rgba(255, 255, 255, 0.05) 250deg, transparent 270deg),
-        repeating-radial-gradient(rgba(0,0,0,0.85) 0, rgba(0,0,0,0.85) 2px, transparent 3px, transparent 4px);
+        conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            rgba(255, 255, 255, 0.05) 20deg,
+            rgba(255, 255, 255, 0.35) 45deg, 
+            rgba(255, 255, 255, 0.05) 70deg,
+            transparent 90deg,
+            transparent 180deg,
+            rgba(255, 255, 255, 0.05) 200deg,
+            rgba(255, 255, 255, 0.35) 225deg, 
+            rgba(255, 255, 255, 0.05) 250deg,
+            transparent 270deg
+        ),
+        repeating-radial-gradient(
+            rgba(0,0,0,0.85) 0, 
+            rgba(0,0,0,0.85) 2px, 
+            transparent 3px, 
+            transparent 4px
+        );
 }
 
 .disk-label {
@@ -568,12 +568,11 @@ body {
         width: var(--disk-mobile-size);
         height: var(--disk-mobile-size);
     }
-    /* Di chuyển đĩa lên trên ở mobile để tránh che nội dung */
     .card-container.is-focused .disk-container.state-playing {
-        transform: translate(-50%, -65%) translateZ(0) !important; 
+        transform: translate(-50%, -60%) translateZ(0); 
     }
     .card-container.is-focused .disk-container.state-retracted {
-        transform: translate(-50%, -50%) translateZ(0) !important;
+        transform: translate(-50%, -45%) translateZ(0);
     }
 }
 
@@ -613,7 +612,7 @@ body {
 .card-content {
     display: flex;
     padding: 20px 24px;
-    gap: 15px;
+    gap: 25px;
     flex: 1;
     align-items: center;
     position: relative;
@@ -621,8 +620,8 @@ body {
 }
 
 .photo-area {
-    width: 90px; 
-    height: 120px;
+    width: 105px;
+    height: 140px;
     flex-shrink: 0; 
     border-radius: 12px;
     background-color: rgba(255, 255, 255, 0.3); 
@@ -655,7 +654,7 @@ body {
     justify-content: center;
 }
 
-.field { margin-bottom: 6px; }
+.field { margin-bottom: 8px; }
 
 .label {
     font-size: 9px;
@@ -667,7 +666,7 @@ body {
 }
 
 .value {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     color: #1e293b;
     white-space: nowrap;
@@ -690,8 +689,8 @@ body {
 
 .keywords {
     display: flex;
-    gap: 4px;
-    margin-top: 8px;
+    gap: 6px;
+    margin-top: 10px;
     flex-wrap: wrap;
 }
 
@@ -750,11 +749,11 @@ body {
 }
 
 .card-container.is-focused .bio-text {
-    font-size: 15px; 
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.8;
 }
 .card-container.is-focused .bio-title {
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 15px;
 }
 
