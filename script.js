@@ -14,8 +14,7 @@ let currentDisk = null;
 let diskTimeout = null; 
 
 // Giữ nguyên dữ liệu membersData của bạn
-const membersData =,
-      bio: "Mình cảm thấy bản thân là một cô gái sống nội tâm, tuy nhiều người nhận xét nhìn vẻ bề ngoài thì thấy mình khá lạnh lùng, khó gần nhưng mà khi tiếp xúc rùi thì mình khá là thân thiện, dễ chơi đó nha. Với nhóm tính cách INFJ, mình là một người sống khá là nguyên tắc, thích làm mọi việc rõ ràng và có trách nhiệm. Đây vừa là điểm mạnh, vừa là điểm yếu của mình vì đôi khi mình hay tự đặt áp lực khá lớn cho bản thân. Mình không phải là người quá sôi nổi, nhưng lại nhạy cảm và tinh tế, dễ để ý đến cảm xúc của người khác. Dù bản thân có những khuyết điểm nhưng mình luôn cố gắng yêu bản thân từng ngày, với mình thì sự trưởng thành đến từ việc dám đối diện với thiếu sót của bản thân và kiên trì thay đổi. Vào những lúc đối diện với khó khăn mình luôn nghĩ đến câu nói mà mình tâm đắc: 'Vì mình có khả năng vượt qua, nên thử thách này mới xuất hiện' để nhắc nhở bản thân phải mạnh mẽ và cố gắng hơn nữa." },
+const membersData = [
     { group: 1, name: "Hồ Trần Diệp Ngân", role: "Lớp trưởng", img: "image/avatars/HTDN.jpg",
       dob: "18/01/2008", keywords:,
       bio: "Hello mình là Diệp Ngân, mình đã từng mong muốn 3 năm cấp 3 của mình sẽ được đồng hành cùng một tập thể đoàn kết và gắn bó, giờ chắc được 2,5 năm ròi và mình RẤT RẤT hạnh phúc khi mong ước của mình thành sự thật rùi ilysm 12A2" },
