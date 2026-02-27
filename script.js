@@ -73,6 +73,10 @@ const membersData =[
     { group: 2, name: "Nguyễn Trần Minh Uyên", role: "", img: "image/avatars/NTMU.jpg",
       dob: "27/11/2008", keywords: ["Bùng cháy", "Âm thầm", "Hoạt náo"],
       bio: "Hello mọi người mình là Minh Uyên đây, mình rất quý tập thể 12A2. Trong ba năm học vừa qua mình có rất nhiều kỉ niệm vui cùng lớp, nên mời các bạn cùng khám phá những kỉ niệm đó cùng bọn mình nha" },
+      
+      { group: 2, name: "Nguyễn Hải Anh", role: "Ban tự quản", img: "image/avatars/NHA.jpg", 
+      dob: "30/08/2008", keywords:["buồn ngủ", "oách", "quỷ quậy"], 
+      bio: "OÁCH NHẤT 12A2 !!!" },
 
     // --- TỔ 3 ---
     { group: 3, name: "Lê Nguyễn Khánh Tiên", role: "Tổ trưởng", img: "image/avatars/LNKT.jpg",
@@ -106,10 +110,6 @@ const membersData =[
     { group: 3, name: "Trần Huyền Trang", role: "Lớp phó học tập", img: "image/avatars/THT.jpg",
       dob: "07/01/2008", keywords: ["Cởi mở", "Hoan hỉ", "Kiểm Soát 🥵"],
       bio: "Mình muốn làm luật sư ở Đức, mà hơi khó tại gia đình không cho, chắc chỉ ở Đức thôi là được 🫧 Mình nghĩ bản thân mình hiện tại có thể gọi là gần trở thành phiên bản mà mình muốn để sẵn sàng bước vào thế giới người lớn trong tương lai, gất là vui 🥳 cũng nhờ vào mọi người, những khoảng khắc và cảm xúc mình có trong suốt 18 năm qua ☃️ Tương lai hi vọng mọi người giữ sức khoẻ, may mắn và vui vẻ, hi vọng mốt mình sẽ trở thành young rich beautiful lady, mua truyện 🏳️‍🌈, đi concert ENHYPEN, du lịch đi chơi với gia đình và bạn bè." },
-
-    { group: 3, name: "Nguyễn Hải Anh", role: "Ban tự quản", img: "image/avatars/NHA.jpg", 
-      dob: "30/08/2008", keywords:["buồn ngủ", "oách", "quỷ quậy"], 
-      bio: "OÁCH NHẤT 12A2 !!!" },
 
     // --- TỔ 4 ---
     { group: 4, name: "Nguyễn Quỳnh Lam", role: "Tổ trưởng", img: "image/avatars/NQL.jpg",
