@@ -581,36 +581,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 5300); 
     }
 });
-// ==========================================
-// --- HIỆU ỨNG SMOOTH SCROLL (LENIS) ---
-// ==========================================
-document.addEventListener("DOMContentLoaded", () => {
-    // 1. Khởi tạo hiệu ứng cuộn Lenis
-    const lenis = new Lenis({
-        duration: 1.2, // Chỉnh thông số này để cuộn nhanh/chậm (mặc định 1.2)
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Đồ thị gia tốc quán tính
-        smooth: true,
-        wheelMultiplier: 1, 
-    });
-
-    // 2. Đồng bộ tốc độ cuộn của Lenis với GSAP ScrollTrigger hiện có
-    lenis.on('scroll', ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-    });
-
-    gsap.ticker.lagSmoothing(0);
-
-    // 3. Tự động khoá/mở cuộn khi có màn hình Loading
-    // Do code Loading cũ của bạn có can thiệp vào "overflow: hidden", ta cần báo cho Lenis dừng lại
-    const observer = new MutationObserver(() => {
-        if (document.body.style.overflow === "hidden") {
-            lenis.stop();
-        } else {
-            lenis.start();
-        }
-    });
-
-    observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
-});

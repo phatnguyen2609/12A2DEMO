@@ -907,31 +907,3 @@ body.no-scroll, html.no-scroll {
         100% { transform: translate(-50%, -50%) rotateY(0deg) rotateZ(0deg) scale(1.05); } 
     }
 }
-/* ==========================================
-   LENIS SMOOTH SCROLL STYLES
-========================================== */
-html.lenis, html.lenis body {
-    height: auto;
-}
-
-.lenis.lenis-smooth {
-    scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-    overflow: hidden;
-}
-
-.lenis.lenis-smooth iframe {
-    pointer-events: none;
-}
-
-/* Ẩn thanh cuộn mặc định (Scrollbar) cho giống app */
-::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; 
-}
