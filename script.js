@@ -48,7 +48,7 @@ const membersData =[
     // --- TỔ 2 ---
     { group: 2, name: "Đào Khải Anh", role: "Tổ trưởng", img: "image/avatars/ĐKA.jpg", dob: "09/01/2008", keywords:["tiNtIN", "ADobe", "ciNeMA"], bio: "TÔI YÊU 12A2!!!" },
     
-    { group: 2, name: "Phạm Bảo Linh", role: "Sao đỏ", img: "image/avatars/PBL.jpg", dob: "03/11/2008", keywords:[], bio: "Mình là Bảo Linh, hay còn là 'blin ơi', 'ninh ơi', 'blu'…<br><br>Mình là một tâm hồn khao khát khám phá. Muốn đi nhiều nơi, gặp nhiều người, học thêm thật nhiều điều mới và cảm nhận hết những gì mình có thể. Mình biết ơn bản thân vì đã dám sống hết mình, dám thử những điều chưa từng, dám sai, dám đối diện cả những lúc bản thân yếu lòng và không hoàn hảo.<br><br>Mình rất trân trọng mỗi khi có 'quality time' bên người mình thương. Mình thích chụp lại những điều rất nhỏ trong đời (bởi z nên điện thoại 512gb mà hết 400gb hình rùi hihi). Để kể cho nghe 400gb đó có những gì nha:<br><br>Ba năm ở Hùng Vương trôi nhanh như một giấc mơ đẹp, nhưng mình đã kịp gói ghém vào đó rất nhiều 'kho báu' - Là A2K28, là The Clef, là HVC, CDTTBP, và hơn cả là những người anh, em, chị, bạn nơi đây. Mình được học, được sai, được sửa, được trưởng thành. Và hơn hết, mình đã tìm thấy những người bạn luôn ở bên, cổ vũ mình bước ra khỏi vùng an toàn, tiếp thêm sức mạnh mỗi khi mình chùn bước, và vực mình dậy mỗi khi sợ hãi lo âu bao quanh. Mình yêu mọi người nhiều lắm lắm, đặc biệt là A2 của mình. Cảm ơn lớp vì đã cùng mình đi qua ba năm rất rực rỡ, đã giúp mình trưởng thành hơn từng chút một, và song song với đó, A2 đã chữa lành mình từ những điều rất nhỏ thôi à.<br><br>Cảm ơn vì đã đi cùng nhau. Viết cũng đã dài, kết lại, mình mong rằng sau này dù đi đâu chăng nữa chúng mình vẫn sẽ luôn dõi về nhau nha. Mong cho mỗi chúng ta đều sẽ phát triển thật rực rỡ trên con đường riêng, mình tự hào về mọi người lắmm. I love all of you guys<br><br>'to a new chapter. may it be the best one written yet'" },
+    { group: 2, name: "Phạm Bảo Linh", role: "Sao đỏ", img: "image/avatars/PBL.jpg", dob: "03/11/2008", keywords:["Ấm áp", "Âm thầm", "Nghệ sĩ"], bio: "Mình là Bảo Linh, hay còn là 'blin ơi', 'ninh ơi', 'blu'…<br><br>Mình là một tâm hồn khao khát khám phá. Muốn đi nhiều nơi, gặp nhiều người, học thêm thật nhiều điều mới và cảm nhận hết những gì mình có thể. Mình biết ơn bản thân vì đã dám sống hết mình, dám thử những điều chưa từng, dám sai, dám đối diện cả những lúc bản thân yếu lòng và không hoàn hảo.<br><br>Mình rất trân trọng mỗi khi có 'quality time' bên người mình thương. Mình thích chụp lại những điều rất nhỏ trong đời (bởi z nên điện thoại 512gb mà hết 400gb hình rùi hihi). Để kể cho nghe 400gb đó có những gì nha:<br><br>Ba năm ở Hùng Vương trôi nhanh như một giấc mơ đẹp, nhưng mình đã kịp gói ghém vào đó rất nhiều 'kho báu' - Là A2K28, là The Clef, là HVC, CDTTBP, và hơn cả là những người anh, em, chị, bạn nơi đây. Mình được học, được sai, được sửa, được trưởng thành. Và hơn hết, mình đã tìm thấy những người bạn luôn ở bên, cổ vũ mình bước ra khỏi vùng an toàn, tiếp thêm sức mạnh mỗi khi mình chùn bước, và vực mình dậy mỗi khi sợ hãi lo âu bao quanh. Mình yêu mọi người nhiều lắm lắm, đặc biệt là A2 của mình. Cảm ơn lớp vì đã cùng mình đi qua ba năm rất rực rỡ, đã giúp mình trưởng thành hơn từng chút một, và song song với đó, A2 đã chữa lành mình từ những điều rất nhỏ thôi à.<br><br>Cảm ơn vì đã đi cùng nhau. Viết cũng đã dài, kết lại, mình mong rằng sau này dù đi đâu chăng nữa chúng mình vẫn sẽ luôn dõi về nhau nha. Mong cho mỗi chúng ta đều sẽ phát triển thật rực rỡ trên con đường riêng, mình tự hào về mọi người lắmm. I love all of you guys<br><br>'to a new chapter. may it be the best one written yet'" },
     
     { group: 2, name: "Thái Trần Bảo Châu", role: "", img: "image/avatars/TTBC.jpg",
       dob: "26/11/2008", keywords:["điềm đạm", "chân thành", "hòa đồng"],
@@ -541,4 +541,43 @@ document.addEventListener("DOMContentLoaded", () => {
             ease: "none"
         });
     });
+});
+// ==========================================
+// --- LOGIC LOADING SCREEN ---
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    const loadingScreen = document.getElementById("loading-screen");
+    const loadingCard = document.getElementById("loading-card");
+    const loadingText = document.getElementById("loading-text");
+
+    if (loadingScreen && loadingCard && loadingText) {
+        // Khóa cuộn trang khi đang loading
+        document.body.style.overflow = "hidden";
+
+        // Bước 1: 0.3s sau khi vào web, thẻ bay lên
+        setTimeout(() => {
+            loadingCard.classList.add("card-animate-in");
+        }, 300);
+
+        // Bước 2: Tới giây thứ 3.8, text bật nảy lên và đổi thành SẴN SÀNG
+        setTimeout(() => {
+            loadingText.innerHTML = "SẴN SÀNG! 🚀";
+            loadingText.classList.add("ready");
+        }, 3800);
+
+        // Bước 3: Tới giây thứ 5.3 (Kéo dài thêm 1.5s), bắt đầu mờ màn hình chờ
+        setTimeout(() => {
+            loadingScreen.style.opacity = "0";
+            loadingScreen.style.visibility = "hidden";
+            
+            // Trả lại thanh cuộn cho web
+            document.body.style.overflow = "";
+
+            // Gỡ code thừa khỏi DOM sau khi mờ hẳn (0.8s) để không cản trở việc click thẻ
+            setTimeout(() => {
+                loadingScreen.remove();
+            }, 800); 
+
+        }, 5300); 
+    }
 });

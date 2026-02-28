@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách thành viên lớp Chuyên Anh 2 - Khóa 28</title>
+    <title>Thẻ Định Danh Lớp 12A2 - K28 (Music Sleeve Edition)</title>
     
     <!-- IMPORT FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +15,26 @@
 </head>
 <body>
 
+<!-- ========================================== -->
+    <!-- LOADING SCREEN (GLASSMORPHISM) -->
+    <!-- ========================================== -->
+    <div id="loading-screen">
+        <div class="card-container" id="loading-card">
+            <div class="card-inner">
+                <div class="card-face card-front">
+                    <!-- Tăng height xíu cho cân đối vì không có ảnh -->
+                    <div class="header-image-container" style="height: 100px;">
+                        <img src="image/headers/header_wait.gif" alt="Đang chuẩn bị..." onerror="this.style.backgroundColor='#1e293b';">
+                    </div>
+                    
+                    <div class="loading-card-content">
+                        <h2 class="status-text" id="loading-text">ĐANG CHUẨN BỊ<span class="dots"></span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- HEADER SECTION -->
     <header class="site-header">
         <a href="#" class="header-logo">
@@ -24,7 +44,7 @@
             <a href="#" class="nav-link">Lớp 10</a>
             <a href="#" class="nav-link">Lớp 11</a>
             <a href="#" class="nav-link">Lớp 12</a>
-            <a href="#" class="nav-link" style="color: var(--primary-color);">Thành Viên</a>
+            <a href="https://boulevardphat.github.io/members/" class="nav-link" style="color: var(--primary-color);">Thành Viên</a>
             <a href="#" class="nav-link">Giáo Viên</a>
         </nav>
     </header>
