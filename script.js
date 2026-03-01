@@ -569,3 +569,51 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+// ==========================================
+// --- LOADING SCREEN LOGIC ---
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    const loadingScreen = document.getElementById('loading-screen');
+    const progressText = document.getElementById('loading-progress');
+    const loadingVideo = document.getElementById('loading-video');
+
+    // 1. Khóa scroll khi đang load để người dùng không cuộn trang được
+    document.body.classList.add('no-scroll');
+
+    // 2. Tua nhanh video cover làm nền loading (2.5x speed)
+    if (loadingVideo) {
+        loadingVideo.playbackRate = 5; 
+    }
+
+    // 3. Giả lập tiến trình Load (Kéo dài khoảng 3 giây)
+    let currentProgress = 0;
+    const updateInterval = setInterval(() => {
+        // Tăng ngẫu nhiên từ 1 đến 6% để tạo cảm giác load chân thật (không đều đều)
+        let step = Math.floor(Math.random() * 6) + 1; 
+        currentProgress += step;
+
+        if (currentProgress >= 100) {
+            currentProgress = 100;
+            clearInterval(updateInterval);
+            finishLoading();
+        }
+        
+        progressText.innerText = currentProgress + "%";
+    }, 100); // Cứ mỗi 100ms cập nhật 1 lần (tổng khoảng 3 giây sẽ đầy)
+
+    // 4. Hàm chạy khi hoàn thành 100%
+    function finishLoading() {
+        // Dừng thêm một nhịp nhỏ (0.4s) ở 100% cho mượt mắt rồi mới mờ đi
+        setTimeout(() => {
+            loadingScreen.classList.add('hidden');
+            document.body.classList.remove('no-scroll'); // Mở khóa cuộn trang
+            
+            // Xóa hẳn element loading khỏi HTML sau khi mờ xong để nhẹ web (tránh chạy video ngầm)
+            setTimeout(() => {
+                if (loadingScreen.parentNode) {
+                    loadingScreen.parentNode.removeChild(loadingScreen);
+                }
+            }, 800); 
+        }, 400);
+    }
+});

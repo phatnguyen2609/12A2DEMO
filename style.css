@@ -999,3 +999,67 @@ a, button, .nav-link, .card-container, .disk-body, .feedback-btn {
         height: 40px;
     }
 }
+/* ==========================================
+   --- LOADING SCREEN STYLES --- 
+   ========================================== */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999; /* Đè lên toàn bộ trang (cả header) */
+    background-color: #1e293b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#loading-screen video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); /* Lớp phủ đen bóng mờ */
+    z-index: 2;
+}
+
+#loading-progress {
+    position: absolute;
+    bottom: 50px;
+    right: 60px;
+    z-index: 3;
+    color: #ffffff;
+    font-family: 'Lexend', sans-serif;
+    font-size: 5rem;
+    font-weight: 900;
+    text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.8);
+    letter-spacing: 2px;
+}
+
+/* Class để làm mờ và biến mất */
+#loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    #loading-progress {
+        bottom: 30px;
+        right: 30px;
+        font-size: 3.5rem; /* Thu nhỏ % trên điện thoại */
+    }
+}
