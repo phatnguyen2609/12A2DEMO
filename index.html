@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="image/covers/vinyl.ico">
+    <title>ĐẠI GIA ĐÌNH A2</title>
+    
+    <!-- IMPORT FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Lexend:wght@700;900&family=Itim&family=Oswald:wght@700&family=Paytone+One&family=Spectral:wght@800&display=swap" rel="stylesheet">
+
+    <!-- LIÊN KẾT FILE CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ==========================================
+         LOADING SCREEN 
+         ========================================== -->
+    <div id="loading-screen">
+        <video 
+          id="loading-video"
+          src="image/covers/cover_class.mp4" 
+          autoplay 
+          muted 
+          loop 
+          playsinline>
+        </video>
+        <div class="loading-overlay"></div>
+        <div id="loading-progress">0%</div>
+    </div>
+
+    <!-- HEADER SECTION -->
+    <header class="site-header">
+        <a href="#" class="header-logo">
+            <img src="image/logo.png" alt="Logo 12A2" class="header-logo-img" onerror="this.style.display='none'; this.parentElement.innerHTML='A2<span>K28</span>';">
+        </a>
+        <nav class="main-nav">
+            <a href="https://boulevardphat.github.io/grade10/" class="nav-link">Lớp 10</a>
+            <a href="https://luongminhtriet970.github.io/class11-aniversary/" class="nav-link">Lớp 11</a>
+            <a href="#" class="nav-link">Lớp 12</a>
+            <a href="https://boulevardphat.github.io/members/" class="nav-link" style="color: var(--primary-color);">Thành Viên</a>
+            <a href="https://pgtomvn.github.io/teachers/" class="nav-link">Giáo Viên</a>
+        </nav>
+    </header>
+
+    <!-- MAIN PAGE COVER -->
+    <div class="cover-container">
+        <video 
+          src="image/covers/cover_class.mp4" 
+          class="cover-image" 
+          style="background-color: #64748b;" 
+          autoplay 
+          muted 
+          loop 
+          playsinline>
+        </video>
+        <div class="cover-overlay">
+            <div class="class-title-block">
+                <h1 class="class-title-main">ĐẠI GIA ĐÌNH A2</h1>
+                <div class="class-subtitle">Nơi tập hợp những con người tài giỏi trên lĩnh vực của họ</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay"></div>
+    <!-- Nơi Javascript sẽ render danh sách thành viên -->
+    <div id="app"></div>
+
+    <!-- FOOTER SECTION -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>VỀ CHÚNG TÔI</h3>
+                <!-- Đã sửa: Thêm style để đảm bảo nội dung luôn hiển thị rõ ràng -->
+                <p class="footer-desc" style="color: white; display: block; opacity: 1; visibility: visible;">
+                    Nguyễn Thuận Phát<br>
+                    Trần Hà Minh Anh<br>
+                    Nguyễn Thị Mai Phương<br>
+                    Đặng An Ninh<br>
+                    Nguyễn Quỳnh Lam
+                </p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>LIÊN KẾT NHANH</h3>
+                <ul class="footer-links">
+                    <li><a href="https://boulevardphat.github.io/grade10/">Lớp 10</a></li>
+                    <li><a href="https://luongminhtriet970.github.io/class11-aniversary/">Lớp 11</a></li>
+                    <li><a href="#">Lớp 12</a></li>
+                    <li><a href="https://boulevardphat.github.io/members/">Thành Viên</a></li>
+                    <li><a href="https://pgtomvn.github.io/teachers/">Giáo Viên</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>LIÊN HỆ</h3>
+                <ul class="footer-links">
+                    <!-- Đã sửa: Thêm target="_blank" để mở link Facebook đúng cách và không bị cuộn trang -->
+                    <li><a href="https://www.facebook.com/profile.php?id=61550802202398" target="_blank" rel="noopener noreferrer">Facebook: 12A2 - K28</a></li>
+                </ul>
+                <div style="margin-top: 15px;">
+                    <h4 style="color: white; margin: 0 0 5px 0; font-size: 14px; font-weight: 600;">Góp ý cho lớp:</h4>
+                    <textarea class="feedback-box" rows="3" placeholder="Nhập lời nhắn..."></textarea>
+                    <button class="feedback-btn">Gửi</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2023 - 2026 12A2 K28. All rights reserved. Made with love.
+        </div>
+    </footer>
+
+    <!-- LIÊN KẾT FILE JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
