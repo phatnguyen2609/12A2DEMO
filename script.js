@@ -554,63 +554,33 @@ document.addEventListener("DOMContentLoaded", () => {
         // Khóa cuộn trang khi đang loading
         document.body.style.overflow = "hidden";
 
-        // Bước 1: 0.3s sau khi vào web, thẻ bay lên
+        // Bước 1: 0.3s sau khi vào web, vé bay lên
         setTimeout(() => {
             loadingCard.classList.add("card-animate-in");
         }, 300);
 
-        // Bước 2: Tới giây thứ 3.8, text bật nảy lên và đổi thành SẴN SÀNG
+        // Bước 2: Tới giây thứ 3.8, chữ BIẾN THÀNH NÚT SẴN SÀNG
         setTimeout(() => {
-            loadingText.innerHTML = "SẴN SÀNG! 🚀";
-            loadingText.classList.add("ready");
+            loadingText.innerHTML = "SẴN SÀNG! ✈️"; 
+            loadingText.classList.add("ready"); // Thêm class để CSS biến nó thành nút
+            loadingText.removeAttribute("disabled"); // Mở khóa cho phép bấm
+
+            // Lắng nghe: Chỉ khi người dùng bấm vào cái nút này thì mới chạy hàm tắt
+            loadingText.addEventListener("click", hideLoadingScreen);
         }, 3800);
 
-        // Bước 3: Tới giây thứ 5.3 (Kéo dài thêm 1.5s), bắt đầu mờ màn hình chờ
-        setTimeout(() => {
+        // Bước 3: Hàm tắt màn hình chờ (Chỉ chạy khi người dùng bấm nút)
+        function hideLoadingScreen() {
             loadingScreen.style.opacity = "0";
             loadingScreen.style.visibility = "hidden";
             
             // Trả lại thanh cuộn cho web
             document.body.style.overflow = "";
 
-            // Gỡ code thừa khỏi DOM sau khi mờ hẳn (0.8s) để không cản trở việc click thẻ
+            // Gỡ bỏ hoàn toàn rác HTML để không cản trở web (sau 0.8s)
             setTimeout(() => {
                 loadingScreen.remove();
             }, 800); 
-
-        }, 5300); 
-    }
-});
-// ==========================================
-// --- HIỆU ỨNG SMOOTH SCROLL (LENIS) ---
-// ==========================================
-document.addEventListener("DOMContentLoaded", () => {
-    // 1. Khởi tạo hiệu ứng cuộn Lenis
-    const lenis = new Lenis({
-        duration: 1.2, // Chỉnh thông số này để cuộn nhanh/chậm (mặc định 1.2)
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Đồ thị gia tốc quán tính
-        smooth: true,
-        wheelMultiplier: 1, 
-    });
-
-    // 2. Đồng bộ tốc độ cuộn của Lenis với GSAP ScrollTrigger hiện có
-    lenis.on('scroll', ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-    });
-
-    gsap.ticker.lagSmoothing(0);
-
-    // 3. Tự động khoá/mở cuộn khi có màn hình Loading
-    // Do code Loading cũ của bạn có can thiệp vào "overflow: hidden", ta cần báo cho Lenis dừng lại
-    const observer = new MutationObserver(() => {
-        if (document.body.style.overflow === "hidden") {
-            lenis.stop();
-        } else {
-            lenis.start();
         }
-    });
-
-    observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+    }
 });

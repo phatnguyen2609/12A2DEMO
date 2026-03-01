@@ -16,22 +16,15 @@
 <body>
 
 <!-- ========================================== -->
-    <!-- LOADING SCREEN (GLASSMORPHISM) -->
+    <!-- LOADING SCREEN (BOARDING PASS) -->
     <!-- ========================================== -->
     <div id="loading-screen">
-        <div class="card-container" id="loading-card">
-            <div class="card-inner">
-                <div class="card-face card-front">
-                    <!-- Tăng height xíu cho cân đối vì không có ảnh -->
-                    <div class="header-image-container" style="height: 100px;">
-                        <img src="image/headers/header_wait.gif" alt="Đang chuẩn bị..." onerror="this.style.backgroundColor='#1e293b';">
-                    </div>
-                    
-                    <div class="loading-card-content">
-                        <h2 class="status-text" id="loading-text">ĐANG CHUẨN BỊ<span class="dots"></span></h2>
-                    </div>
-                </div>
-            </div>
+        <div id="loading-card" class="boarding-pass-wrapper">
+            <!-- Vé máy bay GIF với tỷ lệ chuẩn -->
+            <img src="image/headers/header_wait.gif" alt="Đang chuẩn bị vé..." class="boarding-pass-img" onerror="this.style.backgroundColor='#1e293b';">
+            
+            <!-- Dòng chữ trạng thái ngay dưới vé -->
+            <button class="status-text" id="loading-text" disabled>ĐANG CHUẨN BỊ<span class="dots"></span></button>
         </div>
     </div>
 
@@ -112,7 +105,6 @@
     <!-- LIÊN KẾT FILE JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -853,32 +853,55 @@ body.no-scroll, html.no-scroll {
     pointer-events: none; 
     position: absolute;
     left: 50%; top: 50%;
+    
+    /* DÒNG NÀY BỊ THIẾU: Giấu chiếc vé xuống tít dưới đáy màn hình (150vh) trước khi bay lên */
     transform: translate(-50%, 150vh) rotateY(-720deg) rotateZ(-15deg) scale(0.5);
+    
     margin: 0 !important;
-}
-
-.loading-card-content {
     display: flex;
-    flex: 1;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
-    text-align: center;
+    gap: 30px; 
+    
+    width: 100%; 
+    max-width: 850px; 
+    padding: 0 24px; 
+    box-sizing: border-box;
 }
 
+.boarding-pass-img {
+    width: 100%; /* Trải dài hết width của #loading-card (đã trừ padding) */
+    height: auto;
+    border-radius: 12px; /* Bo góc vé máy bay nhỏ lại xíu cho chân thật */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25); 
+    display: block;
+}
+
+/* Các styles cũ cho chữ và animation (Giữ nguyên) */
 .status-text {
     font-family: 'Lexend', sans-serif;
     font-size: 26px;
     font-weight: 900;
-    color: #475569;
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    /* MỚI: Thêm nền bo tròn cho chữ */
+    color: #1e293b; /* Màu chữ đậm */
+    background: rgba(255, 255, 255, 0.85); /* Nền trắng mờ */
+    padding: 12px 30px; /* Căn lề tạo không gian quanh chữ */
+    border-radius: 50px; /* Bo góc tròn xoe */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Đổ bóng để tách biệt khỏi nền */
+    border: 1px solid rgba(255,255,255, 0.5); /* Viền sáng nhẹ */
 }
 
 .status-text.ready {
-    color: #3b82f6; 
+    /* MỚI: Đổi màu rực rỡ khi Sẵn Sàng */
+    color: #ffffff; /* Chữ trắng */
+    background: #3b82f6; /* Nền chuyển sang xanh nổi bật */
+    border-color: #3b82f6; 
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.5); /* Đổ bóng phát sáng màu xanh */
     transform: scale(1.15); 
 }
 
@@ -893,7 +916,8 @@ body.no-scroll, html.no-scroll {
 
 @keyframes epicFlyIn {
     0% { transform: translate(-50%, 150vh) rotateY(-720deg) rotateZ(-25deg) scale(0.5); }
-    100% { transform: translate(-50%, -50%) rotateY(0deg) rotateZ(0deg) scale(1.15); }
+    /* Đổi scale kết thúc về 1.0 để vé không bị bung ra khỏi viền màn hình */
+    100% { transform: translate(-50%, -50%) rotateY(0deg) rotateZ(0deg) scale(1); }
 }
 
 @keyframes typingDots {
@@ -901,37 +925,64 @@ body.no-scroll, html.no-scroll {
 }
 
 @media (max-width: 768px) {
-    .status-text { font-size: 22px; }
+    #loading-card {
+        padding: 0 16px; /* Lề điện thoại nhỏ hơn chút */
+        gap: 20px; /* Thu hẹp khoảng cách vé và nút */
+    }
+    
+    /* Bóp nhỏ lại nút SẴN SÀNG cho cân đối với vé */
+    .status-text { 
+        font-size: 18px; 
+        min-width: 220px; 
+        padding: 12px 20px;
+    }
+
     @keyframes epicFlyIn {
         0% { transform: translate(-50%, 150vh) rotateY(-720deg) rotateZ(-25deg) scale(0.5); }
-        100% { transform: translate(-50%, -50%) rotateY(0deg) rotateZ(0deg) scale(1.05); } 
+        /* Trên điện thoại cũng chốt hạ ở scale(1) */
+        100% { transform: translate(-50%, -50%) rotateY(0deg) rotateZ(0deg) scale(1); } 
     }
 }
-/* ==========================================
-   LENIS SMOOTH SCROLL STYLES
-========================================== */
-html.lenis, html.lenis body {
-    height: auto;
+/* Trạng thái chờ: Đã định hình sẵn khung nhưng nền trong suốt (tàng hình) */
+.status-text {
+    font-family: 'Lexend', sans-serif;
+    font-size: 24px; /* Chỉnh chữ gọn lại một chút */
+    font-weight: 900;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* CỐ ĐỊNH KÍCH THƯỚC: Giúp ô không bị nhảy khi đổi chữ */
+    min-width: 300px; /* Khóa cứng chiều rộng tối thiểu */
+    padding: 15px 30px; /* Cố định lề ngay từ đầu */
+    text-align: center; /* Căn giữa chữ hoàn hảo */
+    border-radius: 50px; /* Bo góc sẵn */
+    
+    /* Giao diện lúc chờ */
+    background: transparent;
+    border: none;
+    color: #475569; 
+    outline: none;
+    cursor: default; 
+    
+    /* Hiệu ứng chuyển đổi cực êm */
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.lenis.lenis-smooth {
-    scroll-behavior: auto !important;
+/* Trạng thái Sẵn sàng: Chỉ việc đổ màu vào khung đã có sẵn */
+.status-text.ready {
+    color: #ffffff; 
+    background: #3b82f6; 
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.5); 
+    transform: scale(1.05); /* Chỉ phình to lên xíu xiu cho tinh tế */
+    
+    cursor: pointer; 
+    pointer-events: auto;
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-    overflow: hidden;
-}
-
-.lenis.lenis-smooth iframe {
-    pointer-events: none;
-}
-
-/* Ẩn thanh cuộn mặc định (Scrollbar) cho giống app */
-::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; 
+/* Hiệu ứng khi rê chuột vào nút Sẵn Sàng */
+.status-text.ready:hover {
+    background: #2563eb;
+    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.6);
+    transform: scale(1.1); /* Hover nở ra nhẹ nhàng */
 }
