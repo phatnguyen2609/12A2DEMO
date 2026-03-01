@@ -200,7 +200,7 @@ body {
     width: 100%;
     height: calc(100vh - var(--header-height)); 
     background-color: #cbd5e1;
-    margin-bottom: 60px;
+    margin-bottom: 10px; /* 👈 SỬA TỪ 60px THÀNH 0px */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transform-origin: top center; 
 }
@@ -250,7 +250,7 @@ body {
 
 /* --- GROUP SECTIONS --- */
 .group-section {
-    margin-bottom: 20px; 
+    margin-bottom: 10px; 
     max-width: 100%;
     padding: 60px 20px;
     position: relative;
@@ -830,159 +830,172 @@ body.no-scroll, html.no-scroll {
     overflow: hidden;
 }
 /* ==========================================
-   LOADING SCREEN STYLES
-========================================== */
-#loading-screen {
+   --- CUSTOM CURSORS (4 MÙA & TRUNG TÍNH) --- 
+   ========================================== */
+
+/* 1. Con trỏ trung tính cho toàn bộ trang (Icon lấp lánh) */
+body {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>✨</text></svg>") 16 16, auto;
+}
+
+/* 2. Tổ 1 (Mùa Xuân - Hoa anh đào) */
+.season-spring {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🌸</text></svg>") 16 16, auto;
+}
+
+/* 3. Tổ 2 (Mùa Hè - Mặt trời) */
+.season-summer {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>☀️</text></svg>") 16 16, auto;
+}
+
+/* 4. Tổ 3 (Mùa Thu - Lá phong) */
+.season-autumn {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>🍁</text></svg>") 16 16, auto;
+}
+
+/* 5. Tổ 4 (Mùa Đông - Bông tuyết) */
+.season-winter {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>❄️</text></svg>") 16 16, auto;
+}
+
+/* 6. Con trỏ khi tương tác với thẻ bài, đĩa nhạc, link (Icon ngón tay) */
+a, button, .nav-link, .card-container, .disk-body, .feedback-btn {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text y='24' font-size='24'>👆</text></svg>") 16 0, pointer !important;
+}
+/* ==========================================
+   --- CUSTOM TEXT DƯỚI TỰA ĐỀ TỪNG TỔ --- 
+   ========================================== */
+
+/* Ép margin của tựa đề nhỏ lại để nhường chỗ cho dòng text */
+.group-title-text {
+    margin-bottom: 10px !important; 
+}
+
+/* Kiểu dáng cho dòng text tự nhập */
+.group-subtitle-text {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 40px; /* Bù lại khoảng trống cho phần bên dưới */
+    font-family: 'Be Vietnam Pro', sans-serif;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+}
+
+/* Màu sắc dòng text trùng với tone màu (theme) của từng tổ */
+.subtitle-theme-1 { color: #db2777; }
+.subtitle-theme-2 { color: #059669; }
+.subtitle-theme-3 { color: #d97706; }
+.subtitle-theme-4 { color: #475569; }
+
+/* Thu nhỏ font chữ và khoảng cách trên giao diện điện thoại */
+@media (max-width: 768px) {
+    .group-title-text { margin-bottom: 5px !important; }
+    .group-subtitle-text { 
+        font-size: 1rem; 
+        margin-bottom: 30px; 
+    }
+}
+/* ==========================================
+   --- AUDIO PROMPT (NÚT GỢI Ý BẬT NHẠC) --- 
+   ========================================== */
+.audio-prompt {
     position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    z-index: 99999;
+    bottom: 30px;
+    right: 30px; /* Chuyển sang góc dưới cùng bên phải */
+    left: auto;
+    background: #ffffff; /* Nền trắng tinh */
+    color: #1e293b; /* Chữ màu xám đen (trùng màu chủ đạo của web) */
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    
+    /* Box-shadow: Lớp 1 là glow trắng phát sáng, Lớp 2 là bóng mờ nhẹ để tách nền */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Viền cực mỏng cho nét */
+    
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 8000;
+    cursor: pointer;
+    animation: floatAndPulseRight 2s infinite ease-in-out;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.audio-prompt.hidden {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    pointer-events: none;
+}
+
+/* Hiệu ứng bay lơ lửng và nhịp thở */
+@keyframes floatAndPulseRight {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.02); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+/* Hiển thị trên điện thoại */
+@media (max-width: 768px) {
+    .audio-prompt {
+        bottom: 20px;
+        right: 20px; /* Vẫn giữ ở góc phải nhưng sát viền hơn */
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+}
+/* ==========================================
+   --- BG MUSIC TOGGLE (NÚT BẬT/TẮT NHẠC NỀN) --- 
+   ========================================== */
+.bg-music-toggle {
+    position: fixed;
+    top: 110px; 
+    right: 30px; 
+    width: 45px;
+    height: 45px;
+    background: #ffffff;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 8000; 
+    cursor: pointer;
+    color: #1e293b;
     
-    /* Hiệu ứng kính mờ (Glassmorphism) */
-    background: rgba(248, 250, 252, 0.4); 
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+    /* TRẠNG THÁI ẨN LÚC ĐẦU */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px); /* Nằm cao hơn một chút để tạo hiệu ứng rớt xuống */
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
 }
 
-#loading-card {
-    pointer-events: none; 
-    position: absolute;
-    left: 50%; top: 50%;
-    
-    /* DÒNG NÀY BỊ THIẾU: Giấu chiếc vé xuống tít dưới đáy màn hình (150vh) trước khi bay lên */
-    transform: translate(-50%, 150vh) rotateY(-720deg) rotateZ(-15deg) scale(0.5);
-    
-    margin: 0 !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px; 
-    
-    width: 100%; 
-    max-width: 850px; 
-    padding: 0 24px; 
-    box-sizing: border-box;
-}
-
-.boarding-pass-img {
-    width: 100%; /* Trải dài hết width của #loading-card (đã trừ padding) */
-    height: auto;
-    border-radius: 12px; /* Bo góc vé máy bay nhỏ lại xíu cho chân thật */
-    box-shadow: 0 15px 40px rgba(0,0,0,0.25); 
-    display: block;
-}
-
-/* Các styles cũ cho chữ và animation (Giữ nguyên) */
-.status-text {
-    font-family: 'Lexend', sans-serif;
-    font-size: 26px;
-    font-weight: 900;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    
-    /* MỚI: Thêm nền bo tròn cho chữ */
-    color: #1e293b; /* Màu chữ đậm */
-    background: rgba(255, 255, 255, 0.85); /* Nền trắng mờ */
-    padding: 12px 30px; /* Căn lề tạo không gian quanh chữ */
-    border-radius: 50px; /* Bo góc tròn xoe */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Đổ bóng để tách biệt khỏi nền */
-    border: 1px solid rgba(255,255,255, 0.5); /* Viền sáng nhẹ */
-}
-
-.status-text.ready {
-    /* MỚI: Đổi màu rực rỡ khi Sẵn Sàng */
-    color: #ffffff; /* Chữ trắng */
-    background: #3b82f6; /* Nền chuyển sang xanh nổi bật */
-    border-color: #3b82f6; 
-    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.5); /* Đổ bóng phát sáng màu xanh */
-    transform: scale(1.15); 
-}
-
-.dots::after {
-    content: '';
-    animation: typingDots 1.5s infinite steps(4, end);
-}
-
-.card-animate-in {
-    animation: epicFlyIn 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-@keyframes epicFlyIn {
-    0% { transform: translate(-50%, 150vh) rotateY(-720deg) rotateZ(-25deg) scale(0.5); }
-    /* Đổi scale kết thúc về 1.0 để vé không bị bung ra khỏi viền màn hình */
-    100% { transform: translate(-50%, -50%) rotateY(0deg) rotateZ(0deg) scale(1); }
-}
-
-@keyframes typingDots {
-    0% { content: ''; } 25% { content: '.'; } 50% { content: '..'; } 75% { content: '...'; }
-}
-
-@media (max-width: 768px) {
-    #loading-card {
-        padding: 0 16px; /* Lề điện thoại nhỏ hơn chút */
-        gap: 20px; /* Thu hẹp khoảng cách vé và nút */
-    }
-    
-    /* Bóp nhỏ lại nút SẴN SÀNG cho cân đối với vé */
-    .status-text { 
-        font-size: 18px; 
-        min-width: 220px; 
-        padding: 12px 20px;
-    }
-
-    @keyframes epicFlyIn {
-        0% { transform: translate(-50%, 150vh) rotateY(-720deg) rotateZ(-25deg) scale(0.5); }
-        /* Trên điện thoại cũng chốt hạ ở scale(1) */
-        100% { transform: translate(-50%, -50%) rotateY(0deg) rotateZ(0deg) scale(1); } 
-    }
-}
-/* Trạng thái chờ: Đã định hình sẵn khung nhưng nền trong suốt (tàng hình) */
-.status-text {
-    font-family: 'Lexend', sans-serif;
-    font-size: 24px; /* Chỉnh chữ gọn lại một chút */
-    font-weight: 900;
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    
-    /* CỐ ĐỊNH KÍCH THƯỚC: Giúp ô không bị nhảy khi đổi chữ */
-    min-width: 300px; /* Khóa cứng chiều rộng tối thiểu */
-    padding: 15px 30px; /* Cố định lề ngay từ đầu */
-    text-align: center; /* Căn giữa chữ hoàn hảo */
-    border-radius: 50px; /* Bo góc sẵn */
-    
-    /* Giao diện lúc chờ */
-    background: transparent;
-    border: none;
-    color: #475569; 
-    outline: none;
-    cursor: default; 
-    
-    /* Hiệu ứng chuyển đổi cực êm */
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Trạng thái Sẵn sàng: Chỉ việc đổ màu vào khung đã có sẵn */
-.status-text.ready {
-    color: #ffffff; 
-    background: #3b82f6; 
-    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.5); 
-    transform: scale(1.05); /* Chỉ phình to lên xíu xiu cho tinh tế */
-    
-    cursor: pointer; 
+/* CLASS KHI ĐƯỢC KÍCH HOẠT HIỂN THỊ */
+.bg-music-toggle.is-visible {
+    opacity: 1;
     pointer-events: auto;
+    transform: translateY(0);
 }
 
-/* Hiệu ứng khi rê chuột vào nút Sẵn Sàng */
-.status-text.ready:hover {
-    background: #2563eb;
-    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.6);
-    transform: scale(1.1); /* Hover nở ra nhẹ nhàng */
+.bg-music-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Giao diện trên điện thoại */
+@media (max-width: 768px) {
+    .bg-music-toggle {
+        top: 140px; 
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
 }
