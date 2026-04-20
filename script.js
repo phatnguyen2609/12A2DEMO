@@ -827,3 +827,30 @@ document.addEventListener("DOMContentLoaded", () => {
         videoObserver.observe(coverContainer);
     }
 });
+// ==========================================
+// --- MOMENTUM SMOOTH SCROLLING (LENIS) ---
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+            duration: 1.2,        // Độ dài trớn cuộn
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+            smoothWheel: true
+        });
+
+        // Đồng bộ hóa với GSAP ScrollTrigger
+        if (typeof ScrollTrigger !== 'undefined') {
+            lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => {
+                lenis.raf(time * 1000);
+            });
+            gsap.ticker.lagSmoothing(0);
+        } else {
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+        }
+    }
+});
