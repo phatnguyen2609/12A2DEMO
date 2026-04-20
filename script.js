@@ -653,11 +653,6 @@ document.addEventListener("DOMContentLoaded", () => {
             loadingScreen.classList.add('hidden');
             document.body.classList.remove('no-scroll'); 
             
-            // Tạm dừng loading video để tiết kiệm bộ nhớ trước khi xoá khỏi DOM
-            if (loadingVideo) {
-                loadingVideo.pause();
-            }
-
             setTimeout(() => {
                 if (loadingScreen.parentNode) {
                     loadingScreen.parentNode.removeChild(loadingScreen);
@@ -806,35 +801,3 @@ function updateBottomNav() {
         }
     });
 }
-
-// ==========================================
-// --- TỐI ƯU HIỆU NĂNG: TẠM DỪNG VIDEO KHI KHUẤT TẦM NHÌN ---
-// ==========================================
-document.addEventListener("DOMContentLoaded", () => {
-    const coverVideo = document.querySelector('.cover-container video');
-    const coverContainer = document.querySelector('.cover-container');
-
-    if (coverVideo && coverContainer) {
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                // Nếu phần cover-container không còn hiển thị (đã kéo xuống các tổ)
-                if (!entry.isIntersecting) {
-                    coverVideo.pause(); 
-                } else {
-                    // Tránh lỗi DOMException do autoplay khi user chưa tương tác
-                    let playPromise = coverVideo.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(error => {
-                            console.log("Trình duyệt tạm chặn autoplay video bìa: ", error);
-                        });
-                    }
-                }
-            });
-        }, { 
-            threshold: 0, 
-            rootMargin: "0px" 
-        });
-
-        videoObserver.observe(coverContainer);
-    }
-});
