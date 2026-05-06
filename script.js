@@ -1,3 +1,14 @@
+// ==========================================
+// --- BẢO MẬT GIAO DIỆN: CHỐNG CHUỘT PHẢI & BÔI ĐEN ---
+// ==========================================
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+document.addEventListener('selectstart', (e) => {
+    if (e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'INPUT') e.preventDefault();
+});
+document.addEventListener('dragstart', (e) => {
+    if (e.target.tagName === 'IMG' || e.target.tagName === 'A') e.preventDefault();
+});
+
 const CLASS_NAME = "Chuyên Anh 2 (2023-2026)";
 
 const GROUP_HEADERS = {
@@ -12,11 +23,6 @@ const GROUP_SUBTITLES = {
     3: "Dịu dàng, ôn hòa, đem lại sự yên bình cho lớp",
     4: "Nơi bản sắc cá nhân và cái tôi nghệ thuật được tôn vinh"
 };
-
-// ==========================================
-// --- CHỐNG CLICK CHUỘT PHẢI ---
-// ==========================================
-document.addEventListener('contextmenu', event => event.preventDefault());
 
 // ==========================================
 // --- QUẢN LÝ AUDIO: THẺ BÀI & NHẠC NỀN ---
@@ -184,7 +190,7 @@ const membersData =[
     { group: 1, name: "Lương Minh Triết", role: "Lớp phó lao động", img: "image/avatars/LMT.jpg", dob: "05/07/2008", keywords:["Self-indulgent", "eager beaver", "conscientious"], bio: "Mình là Lương Minh Triết, or Cá Trích. Trên hành trình 'tập làm người lớn', mình từng không ít lần loay hoay giữa những ngã rẽ, nơi mỗi quyết định đều mang sức nặng của một sự kết thúc hay một khởi đầu. BUT, chính trong những xoay vần ấy, mình nhận ra một điều: changes reveal what stays the same. Sau tất cả, điều khiến mình cảm thấy tự hào nhất không phải là những thành tựu, mà là việc mình đã dám giữ lại 'đứa trẻ' bên trong – một đứa trẻ dám mơ những giấc mơ lớn và dám sống trọn vẹn vì những gì mình yêu thích." },
 
     { group: 2, name: "Đào Khải Anh", role: "Tổ trưởng", img: "image/avatars/ĐKA.jpg", dob: "09/01/2008", keywords:["tiNtIN", "ADobe", "ciNeMA"], bio: "TÔI YÊU 12A2!!!" },
-    { group: 2, name: "Phạm Bảo Linh", role: "Sao đỏ", img: "image/avatars/PBL.jpg", dob: "03/11/2008", keywords:["Ấm áp", "Âm thầm", "Nghệ sĩ"], bio: "Mình là Bảo Linh, hay còn là 'blin ơi', 'ninh ơi', 'blu'…<br><br>Mình là một tâm hồn khao khát khám phá. Muốn đi nhiều nơi, gặp nhiều người, học thêm thật nhiều điều mới và cảm nhận hết những gì mình có thể. Mình biết ơn bản thân vì đã dám sống hết mình, dám thử những điều chưa từng, dám sai, dám đối diện cả những lúc bản thân yếu lòng và không hoàn hảo.<br><br>Mình rất trân trọng mỗi khi có 'quality time' bên người mình thương. Mình thích chụp lại những điều rất nhỏ trong đời (bởi z nên điện thoại 512gb mà hết 400gb hình rùi hihi). Để kể cho nghe 400gb đó có những gì nha:<br><br>Ba năm ở Hùng Vương trôi nhanh như một giấc mơ đẹp, nhưng mình đã kịp gói ghém vào đó rất nhiều 'kho báu' - Là A2K28, là The Clef, là HVC, CDTTBP, và hơn cả là những người anh, em, chị, bạn nơi đây. Mình được học, được sai, được sửa, được trưởng thành. Và hơn hết, mình đã tìm thấy những người bạn luôn ở bên, cổ vũ mình bước ra khỏi vùng an toàn, tiếp thêm sức mạnh mỗi khi mình chùn bước, và vực mình dậy mỗi khi sợ hãi lo âu bao quanh. Mình yêu mọi người nhiều lắm lắm, đặc biệt là A2 của mình. Cảm ơn lớp vì đã cùng mình đi qua ba năm rất rực rỡ, đã giúp mình trưởng thành hơn từng chút một, và song song với đó, A2 đã chữa lành mình từ những điều rất nhỏ thôi à.<br><br>Cảm ơn vì đã đi cùng nhau. Viết cũng đã dài, kết lại, mình mong rằng sau này dù đi đâu chăng nữa chúng mình vẫn sẽ luôn dõi về nhau nha. Mong cho mỗi chúnga đều sẽ phát triển thật rực rỡ trên con đường riêng, mình tự hào về mọi người lắmm. I love all of you guys<br><br>'to a new chapter. may it be the best one written yet'" },
+    { group: 2, name: "Phạm Bảo Linh", role: "Sao đỏ", img: "image/avatars/PBL.jpg", dob: "03/11/2008", keywords:["Ấm áp", "Âm thầm", "Nghệ sĩ"], bio: "Mình là Bảo Linh, hay còn là 'blin ơi', 'ninh ơi', 'blu'…<br><br>Mình là một tâm hồn khao khát khám phá. Muốn đi nhiều nơi, gặp nhiều người, học thêm thật nhiều điều mới và cảm nhận hết những gì mình có thể. Mình biết ơn bản thân vì đã dám sống hết mình, dám thử những điều chưa từng, dám sai, dám đối diện cả những lúc bản thân yếu lòng và không hoàn hảo.<br><br>Mình rất trân trọng mỗi khi có 'quality time' bên người mình thương. Mình thích chụp lại những điều rất nhỏ trong đời (bởi z nên điện thoại 512gb mà hết 400gb hình rùi hihi). Để kể cho nghe 400gb đó có những gì nha:<br><br>Ba năm ở Hùng Vương trôi nhanh như một giấc mơ đẹp, nhưng mình đã kịp gói ghém vào đó rất nhiều 'kho báu' - Là A2K28, là The Clef, là HVC, CDTTBP, và hơn cả là những người anh, em, chị, bạn nơi đây. Mình được học, được sai, được sửa, được trưởng thành. Và hơn hết, mình đã tìm thấy những người bạn luôn ở bên, cổ vũ mình bước ra khỏi vùng an toàn, tiếp thêm sức mạnh mỗi khi mình chùn bước, và vực mình dậy mỗi khi sợ hãi lo âu bao quanh. Mình yêu mọi người nhiều lắm lắm, đặc biệt là A2 của mình. Cảm ơn lớp vì đã cùng mình đi qua ba năm rất rực rỡ, đã giúp mình trưởng thành hơn từng chút một, và song song với đó, A2 đã chữa lành mình từ những điều rất nhỏ thôi à.<br><br>Cảm ơn vì đã đi cùng nhau. Viết cũng đã dài, kết lại, mình mong rằng sau này dù đi đâu chăng nữa chúng mình vẫn sẽ luôn dõi về nhau nha. Mong cho mỗi chúng ta đều sẽ phát triển thật rực rỡ trên con đường riêng, mình tự hào về mọi người lắmm. I love all of you guys<br><br>'to a new chapter. may it be the best one written yet'" },
     { group: 2, name: "Thái Trần Bảo Châu", role: "", img: "image/avatars/TTBC.jpg", dob: "26/11/2008", keywords:["điềm đạm", "chân thành", "hòa đồng"], bio: "Tui rất vui vì đã được là một phần của A2-K28. A2 đã đem đến cho tui những trải nghiệm mới mẻ và những kỉ niệm khó quên. Ở đây, tui không chỉ được học kiến thức mà còn học cách trưởng thành qua từng hoạt động, buổi học và kỉ niệm cùng thầy cô, bạn bè. Những lần cùng nhau cố gắng, cùng cười và cả những lúc chưa hoàn hảo đã giúp tui hiểu hơn về giá trị của sự đoàn kết và sẻ chia. Cảm ơn A2 đã xuất hiện trong hành trình phát triển của tui!" },
     { group: 2, name: "Hà Thị Ánh Dương", role: "", img: "image/avatars/HTÁD.jpg", dob: "27/01/2008", keywords:["Vui vẻ", "thân thiện"], bio: "Tui yêu 12A2 nhiều lắm, yêu theo cách mà mỗi lần nghĩ tới thôi tim cũng thấy ấm lại. Tui thật sự biết ơn, biết ơn rất nhiều vì được là một phần của 12A2, được học chung, cười chung, buồn chung và lớn lên cùng các bạn. Cảm ơn 12A2 vì đã cho tui những kỷ niệm đẹp đẽ, trong veo và dễ thương đến mức sau này nhớ lại chắc chắn sẽ mỉm cười. Những giờ học, những lần nói chuyện vu vơ, những tiếng cười trong lớp… tất cả đều là thanh xuân của tui.<br>Tui cũng muốn nói lời cảm ơn chính bản thân mình. Cảm ơn vì đã không bỏ cuộc, vì đã cố gắng từng ngày dù có lúc mệt mỏi, áp lực, muốn chuyển trường, muốn trốn đi đâu đó. Cảm ơn vì đã đủ mạnh mẽ để vượt qua peer pressure, vượt qua những ngày thấy mình lạc lõng và yếu đuối. Cảm ơn vì đã ở lại, đã kiên trì, để hôm nay có thể tự hào nhìn lại và nói rằng: “Mình đã làm được gòiiiii.”<br>12A2 không chỉ là một lớp học, mà là một phần ký ký ức, một phần thanh xuân, một phần trái tim của tui. Thật sự biết ơn và trân trọng vô cùng 💗💗💗" },
     { group: 2, name: "Phạm Đức Anh", role: "", img: "image/avatars/PĐA.jpg", dob: "28/10/2008", keywords:["Hiền lành", "tốt bụng", "hay lắng nghe"], bio: "Mình là một người luôn mang trong mình nhiều ước mơ và khát vọng. Hồi nhỏ, ước mơ của mình là trở thành một phi công, được bay trên bầu trời cao rộng và khám phá những vùng đất mới. Dù ước mơ ấy có thay đổi theo thời gian, nhưng nó đã nuôi dưỡng trong mình tinh thần dám nghĩ, dám ước và không ngừng cố gắng. Trên hành trình trưởng thành, mình đã trải qua nhiều kỉ niệm đáng nhớ, cả vui lẫn buồn. Những trải nghiệm ấy giúp mình học được cách mở lòng, tự tin hơn, biết lắng nghe và thấu hiểu bản thân cũng như mọi người xung quanh. Chính sự thay đổi trong suy nghĩ và thái độ sống đã giúp mình ngày càng hoàn thiện hơn so với trước kia." },
@@ -195,7 +201,7 @@ const membersData =[
 
     { group: 3, name: "Lê Nguyễn Khánh Tiên", role: "Tổ trưởng", img: "image/avatars/LNKT.jpg", dob: "18/09/2008", keywords:["Đẹp gái", "Thấu hiểu", "Ý nghĩa"], bio: "Tui là cá mập 🦈, ý là biệt danh thôi nha.<br>Tui của hiện tại được vun đắp từ tình yêu của những người trong gia đình, từ sự đồng hành của những người bạn siêu ôk và từ cả việc tui học được cách yêu thương Khánh Tiên. Những điều đó không tự nhiên mà có, mà bắt đầu từ những sai lầm trong quá khứ, từ những lần vấp ngã khiến tui buồn, suy nghĩ và trưởng thành hơn. Chính những kỉ niệm đó đã giúp tui hiểu bản thân và biết trân trọng hiện tại. Ước mơ của tui rất đơn giản: có thêm thật nhiều TIỀN để tự do sống cuộc đời mình muốn, và có thêm những người thật lòng yêu thương, ở bên tui lâu dài." },
     { group: 3, name: "Huỳnh Nguyễn Thanh Xuân", role: "", img: "image/avatars/HNTX.jpg", dob: "07/05/2008", keywords:["Cái đầu lạnh", "Bình tĩnh", "Kiên nhẫn"], bio: "Mình cảm thấy rất may mắn khi được trở thành một phần của tập thể lớp 12A2. Ba năm đồng hành cùng lớp là quãng thời gian ý nghĩa, giúp mình gặp gỡ những người bạn mới, có thêm những người bạn thân và trải nghiệm nhiều điều thú vị mà bản thân mình trước kia chưa từng nghĩ sẽ được thử. Tất cả những kỉ niệm ấy đã tạo nên một thước phim hài hòa giữa buồn và vui, mang lại giá trị tinh thần vô cùng to lớn đối với mình. Trải qua ba năm, mình cảm thấy bản thân trưởng thành hơn, biết suy nghĩ chín chắn và lo cho tương lai nhiều hơn. Hiện tại, mục tiêu lớn nhất của mình có lẽ là đậu vào ngôi trường đại học mong muốn và được theo đuổi ngành học mình thật sự đam mê." },
-    { group: 3, name: "Hồ Bảo Ngọc", role: "", img: "image/avatars/HBN.jpg", dob: "23/11/2008", keywords:["Lạc quan", "Đa chiều", "Sáng tạo"], bio: "'Everthing happened for a reason'<br>Mình đã luôn giữ mindset đó suốt những năm cấp 3, bởi với mình, những ký ức trong quá khứ, dù vui hay buồn, đều âm thầm góp phần tạo nên con người mình của hiện tại. Có những vấp ngã khiến mình đau đớn, muốn bỏ cuộc, nhưng cũng chính chúng dạy mình mạnh mẽ và lạc quan hơn trong hành trình chinh phục tri thức . Mình tin rằng mọi điều xảy ra trong đời đều mang theo một ý nghĩa riêng, dẫn dắt chúng ta từng bước đến một phiên bản tốt hơn của chính mình và mở ra một tương lai tươi đẹp chờ đón phía trước." },
+    { group: 3, name: "Hồ Bảo Ngọc", role: "", img: "image/avatars/HBN.jpg", dob: "23/11/2008", keywords:["Lạc quan", "Đa chiều", "Sáng tạo"], bio: "'Everthing happened for a reason'<br>Mình đã luôn giữ mindset đó suốt những năm cấp 3, bởi với mình, những ký ức trong quá khứ, dù vui hay buồn, đều âm thầm góp phần tạo nên con người mình của hiện tại. Có những vấp ngã khiến mình đau đớn, muốn bỏ cuộc, nhưng cũng chính chúng dạy mình mạnh mẽ và lạc quan hơn trong hành trình chinh phục tri thức . Mình tin rằng mọi điều xảy ra trong đời đều mang theo một ý nghĩa riêng, dẫn dắt chúngர்பng bước đến một phiên bản tốt hơn của chính mình và mở ra một tương lai tươi đẹp chờ đón phía trước." },
     { group: 3, name: "Đặng Trọng Hoàn", role: "", img: "image/avatars/ĐTH.jpg", dob: "15/10/2008", keywords:["Vô tư", "Hoà đồng", "Hướng nội/ngoại"], bio: "Mình là người tò mò, thích đào sâu mọi thứ mình quan tâm, từ game, công nghệ, âm nhạc cho tới những câu hỏi khoa học và đời sống nghe hơi “vô tri”. Mình có xu hướng suy nghĩ logic (nhiều khi không logic), hay phản biện và không dễ chấp nhận câu trả lời hời hợt. Tính cách pha trộn giữa thực tế và hài hước, nói chuyện khá thẳng, đôi khi cà khịa nhưng không ác ý. Mình coi trọng trải nghiệm hơn hình thức, thích tìm hiểu bản chất vấn đề và làm chủ thứ mình dùng. Dù hay than vãn linh tinh, tôi vẫn nghiêm túc với những điều mình quan tâm và người mình để ý." },
     { group: 3, name: "Phạm Tuấn Minh", role: "", img: "image/avatars/PTM.jpg", dob: "22/08/2008", keywords:["Vui vẻ", "ham học hỏi", "cầu tiến"], bio: "Nhìn lại hành trình đã qua, mình nhận ra sự hoàn thiện của bản thân hiện tại là kết quả của những mảnh ghép kỷ niệm và những ước mơ không ngừng nghỉ. Từ một người hay mơ mộng, những bài học thực tế và sự đồng hành của bạn bè đã giúp mình trở nên điềm tĩnh và thấu đáo hơn. Chính những lần cùng nhau vượt qua áp lực thi cử hay những buổi vui chơi hết mình đã tôi luyện nên một phiên bản mình bản lĩnh của hôm nay. Cảm ơn những năm tháng qua đã làm nền tảng để mình tự tin bước tiếp vào tương lai với tâm thế vững vàng nhất." },
     { group: 3, name: "Đinh Quốc Trí", role: "", img: "image/avatars/ĐQT.jpg", dob: "11/06/2008", keywords:["Bình thường", "Đơn giản", "DMO"], bio: "15/01/2026: Bước vào chuyên Hùng Vương cùng với những ước mơ, hoài bão. Có thể khẳng định rằng, đây là một lựa chọn đầy may mắn đối với mình. 12a2 đã tạo ra cho mình một môi trường mà mình đã thực sự có thể trưởng thành, có được những kỉ niệm mà mình không thể nào quên. Từ những ngày bắt đầu vào lớp, những lần ngông cuồng, những lần thực sự hạnh phúc khi mình được là một phần của lớp, tất cả đã góp phần làm nên một ĐQT của ngày hôm nay. Mình tin rằng, những kí ức ấy sẽ sống mãi trong tâm trí của mình." },
@@ -397,6 +403,7 @@ function createCard(data, index) {
     return container;
 }
 
+// KHẮC PHỤC RỦI RO KỸ THUẬT KHI XOAY MÀN HÌNH/RESIZE
 window.addEventListener('resize', () => {
     const currentIsMobile = window.innerWidth <= 768;
     
@@ -404,9 +411,9 @@ window.addEventListener('resize', () => {
         isMobileView = currentIsMobile;
         
         if (activeCard) {
-            isAnimating = false; 
+            isAnimating = false; // Mở khóa ép buộc
             closeCard();
-            overlay.classList.remove('active'); 
+            overlay.classList.remove('active'); // Dọn dẹp ép buộc
         }
         
         groupMusicObserver.disconnect();
@@ -417,16 +424,16 @@ window.addEventListener('resize', () => {
 });
 
 // ==========================================
-// --- INTERACTION LOGIC (FIX SPAM CLICK) ---
+// --- INTERACTION LOGIC (FIX SPAM CLICK LỖI 1) ---
 // ==========================================
 
 const overlay = document.getElementById('overlay');
 let activeCard = null;
 let placeholder = null; 
-let isAnimating = false; 
+let isAnimating = false; // CỜ CHỐNG SPAM CLICK
 
 function handleCardClick(card) {
-    if (isAnimating) return; 
+    if (isAnimating) return; // Khóa tương tác nếu thẻ đang bay ra/vào
 
     if (activeCard === card) {
         card.classList.toggle('is-flipped');
@@ -435,13 +442,14 @@ function handleCardClick(card) {
 
     if (activeCard) {
         closeCard();
+        // Tự động mở thẻ mới sau khi thẻ cũ đóng xong (650ms để an toàn)
         setTimeout(() => {
             if (!isAnimating) handleCardClick(card);
         }, 650);
         return;
     }
 
-    isAnimating = true; 
+    isAnimating = true; // Khóa
     isCardOpened = true; 
     fadeVolume(groupAudioPlayer, 0, 300, () => groupAudioPlayer.pause());
 
@@ -477,6 +485,7 @@ function handleCardClick(card) {
 
     startDisk(card);
 
+    // Mở khóa sau khi transition CSS hoàn tất
     setTimeout(() => {
         isAnimating = false;
     }, 650);
@@ -526,9 +535,9 @@ function toggleDiskState(container, body) {
 }
 
 function closeCard() {
-    if (!activeCard || isAnimating) return; 
+    if (!activeCard || isAnimating) return; // Nếu đang hoạt ảnh đóng/mở thì chặn
 
-    isAnimating = true; 
+    isAnimating = true; // Khóa
 
     if (diskTimeout) clearTimeout(diskTimeout);
     audioPlayer.pause();
@@ -567,7 +576,7 @@ function closeCard() {
     const currentCard = activeCard;
     const currentPlaceholder = placeholder;
 
-    activeCard = null; 
+    activeCard = null; // Trả về null ngay để logic khóa được giải phóng đúng chuẩn
     placeholder = null;
 
     setTimeout(() => {
@@ -588,7 +597,7 @@ function closeCard() {
         void currentCard.offsetWidth;
         currentCard.style.transition = '';
 
-        isAnimating = false; 
+        isAnimating = false; // Mở khóa
     }, 600); 
 }
 
@@ -617,9 +626,25 @@ document.addEventListener("DOMContentLoaded", () => {
     mm.add("(max-width: 768px)", () => {
         gsap.to(".cover-container", {
             scrollTrigger: { trigger: "body", start: "top top", end: "300px", scrub: 1 },
-            height: "280px", ease: "none"
+            height: "280px", ease: "none" /* Cho nó thu từ 380px xuống 280px khi lướt tạo hiệu ứng đẹp */
         });
     });
+
+    // --- TẠM DỪNG VIDEO COVER KHI KHUẤT MÀN HÌNH TRÁNH HAO TÀI NGUYÊN ---
+    const coverVideo = document.querySelector('.cover-image');
+    const coverContainer = document.querySelector('.cover-container');
+    if (coverVideo && coverContainer) {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    coverVideo.play().catch(e => console.log("Lỗi autoplay video:", e));
+                } else {
+                    coverVideo.pause();
+                }
+            });
+        }, { threshold: 0 });
+        videoObserver.observe(coverContainer);
+    }
 });
 
 // ==========================================
@@ -701,10 +726,11 @@ function createBottomNav() {
             e.preventDefault();
             const section = document.getElementById(`group-${groupNum}`);
             if (section) {
+                // Đo chiều cao thực tế của Header (dù là PC hay Mobile)
                 const header = document.querySelector('.site-header');
                 const headerHeight = header ? header.offsetHeight : 90;
                 
-                // Cập nhật tính toán y (Đã xóa khoảng trừ dư thừa -15 giúp viewport khít mép lề phần tử)
+                // Bỏ offset -15px để cuộn vừa khít cạnh dưới của Header, không bị hở nền
                 const y = section.getBoundingClientRect().top + window.pageYOffset - headerHeight;
                 window.scrollTo({ top: y, behavior: 'smooth' });
             }
@@ -752,6 +778,7 @@ function checkDarkModeForElement(el) {
     }
 }
 
+// KHẮC PHỤC LỖI 2 - THANH ĐIỀU HƯỚNG MOBILE NHẬN DIỆN CHUẨN XÁC HƠN
 function updateBottomNav() {
     const nav = document.querySelector('.bottom-nav-container');
     const prompt = document.querySelector('.audio-prompt');
@@ -773,18 +800,21 @@ function updateBottomNav() {
     let activeGroup = null;
     let maxVisibleArea = 0;
     
+    // Tính toán xem section nào đang hiển thị và chiếm nhiều diện tích trên màn hình nhất
     groups.forEach(group => {
         const rect = group.getBoundingClientRect();
         const visibleTop = Math.max(0, rect.top);
         const visibleBottom = Math.min(window.innerHeight, rect.bottom);
         const visibleHeight = Math.max(0, visibleBottom - visibleTop);
 
+        // Chỉ highlight nếu khối đó chiếm tối thiểu 10% màn hình
         if (visibleHeight > maxVisibleArea && visibleHeight > window.innerHeight * 0.1) {
             maxVisibleArea = visibleHeight;
             activeGroup = group.getAttribute('data-group');
         }
     });
 
+    // Ép buộc chuyển qua tổ 5 nếu đã cuộn đến sát đáy trang web
     const scrollHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
     const currentScroll = window.innerHeight + window.scrollY;
 
@@ -793,31 +823,9 @@ function updateBottomNav() {
     }
 
     document.querySelectorAll('.bottom-nav-item').forEach(item => {
-        item.classList.remove('active'); 
+        item.classList.remove('active'); // Luôn xóa trước để tránh trùng lặp
         if (activeGroup && item.getAttribute('href') === `#group-${activeGroup}`) {
             item.classList.add('active');
         }
     });
 }
-
-// ==========================================
-// --- TẠM DỪNG VIDEO COVER KHI KHUẤT TẦM NHÌN ---
-// ==========================================
-document.addEventListener("DOMContentLoaded", () => {
-    const coverVideo = document.querySelector('.cover-image');
-    const coverContainer = document.querySelector('.cover-container');
-    
-    if (coverVideo && coverContainer) {
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    coverVideo.play().catch(e => console.log("Lỗi autoplay video:", e));
-                } else {
-                    coverVideo.pause(); // Video tự động dừng khi kéo màn hình xuống Tổ 1
-                }
-            });
-        }, { threshold: 0.05 }); 
-        
-        videoObserver.observe(coverContainer);
-    }
-});
