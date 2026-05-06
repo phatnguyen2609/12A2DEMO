@@ -829,3 +829,109 @@ function updateBottomNav() {
         }
     });
 }
+// ==========================================
+// --- REAL-TIME PERFORMANCE SCALING ---
+// ==========================================
+let frameCount = 0;
+let lastTime = performance.now();
+let lowFpsCount = 0;
+let isPerformanceMode = false;
+let fpsRequestID;
+
+function showPerformanceToast() {
+    const toast = document.createElement('div');
+    toast.innerHTML = '⚡ Đã bật Chế độ Tối ưu Hiệu suất';
+    Object.assign(toast.style, {
+        position: 'fixed',
+        top: '20px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        background: '#10b981', // Màu xanh lục an toàn
+        color: 'white',
+        padding: '8px 20px',
+        borderRadius: '50px',
+        fontFamily: "'Be Vietnam Pro', sans-serif",
+        fontSize: '13px',
+        fontWeight: '600',
+        zIndex: '999999',
+        boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+        opacity: '0',
+        transition: 'opacity 0.5s ease',
+        pointerEvents: 'none'
+    });
+    document.body.appendChild(toast);
+    
+    // Fade in
+    setTimeout(() => toast.style.opacity = '1', 100);
+    
+    // Fade out and remove
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 500);
+    }, 3500);
+}
+
+function enablePerformanceMode() {
+    if (isPerformanceMode) return;
+    isPerformanceMode = true;
+    document.body.classList.add('performance-mode');
+    
+    console.log("⚡ Performance Mode Triggered: GPU-heavy effects disabled.");
+    showPerformanceToast();
+
+    // 1. Tắt GSAP ScrollTrigger để tránh tính toán lại Layout liên tục
+    if (window.ScrollTrigger) {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    }
+
+    // 2. Chốt luôn chiều cao của thanh cover (để tránh bị kẹt ở trạng thái lỡ dở khi kill GSAP)
+    const coverContainer = document.querySelector('.cover-container');
+    if (coverContainer) {
+        coverContainer.style.height = window.innerWidth <= 768 ? '280px' : '400px';
+    }
+
+    // 3. Dừng vòng lặp đo FPS để tiết kiệm CPU
+    if (fpsRequestID) cancelAnimationFrame(fpsRequestID);
+}
+
+function checkFPS(currentTime) {
+    if (isPerformanceMode) return;
+
+    frameCount++;
+    if (currentTime - lastTime >= 1000) { // Cứ mỗi 1 giây
+        let fps = frameCount;
+        frameCount = 0;
+        lastTime = currentTime;
+
+        // Nếu FPS rớt xuống dưới 35
+        if (fps < 35) {
+            lowFpsCount++;
+            // Nếu tình trạng giật lag kéo dài liên tục 3 giây
+            if (lowFpsCount >= 3) {
+                enablePerformanceMode();
+                return; // Thoát hẳn
+            }
+        } else {
+            lowFpsCount = 0; // Phục hồi nếu máy hết lag
+        }
+    }
+    fpsRequestID = requestAnimationFrame(checkFPS);
+}
+
+function initPerformanceScaling() {
+    // Phase 1: Kiểm tra phần cứng Tĩnh (Static Hardware Check)
+    // Nếu trình duyệt không hỗ trợ đọc thông số, mặc định là 4 (chấp nhận được)
+    const cores = navigator.hardwareConcurrency || 4;
+    const ram = navigator.deviceMemory || 4;
+
+    if (cores < 4 || ram < 4) {
+        // Máy yếu từ đầu -> Bật Performance Mode ngay
+        enablePerformanceMode();
+    } else {
+        // Phase 2: Máy có vẻ ổn định -> Bắt đầu đo FPS Real-time
+        fpsRequestID = requestAnimationFrame(checkFPS);
+    }
+}
+
+// Khởi chạy ngay sau khi load xong DOM
+document.addEventListener('DOMContentLoaded', initPerformanceScaling);
