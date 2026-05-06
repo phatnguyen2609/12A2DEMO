@@ -14,6 +14,11 @@ const GROUP_SUBTITLES = {
 };
 
 // ==========================================
+// --- CHỐNG CLICK CHUỘT PHẢI ---
+// ==========================================
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+// ==========================================
 // --- QUẢN LÝ AUDIO: THẺ BÀI & NHẠC NỀN ---
 // ==========================================
 const audioPlayer = new Audio();
@@ -179,7 +184,7 @@ const membersData =[
     { group: 1, name: "Lương Minh Triết", role: "Lớp phó lao động", img: "image/avatars/LMT.jpg", dob: "05/07/2008", keywords:["Self-indulgent", "eager beaver", "conscientious"], bio: "Mình là Lương Minh Triết, or Cá Trích. Trên hành trình 'tập làm người lớn', mình từng không ít lần loay hoay giữa những ngã rẽ, nơi mỗi quyết định đều mang sức nặng của một sự kết thúc hay một khởi đầu. BUT, chính trong những xoay vần ấy, mình nhận ra một điều: changes reveal what stays the same. Sau tất cả, điều khiến mình cảm thấy tự hào nhất không phải là những thành tựu, mà là việc mình đã dám giữ lại 'đứa trẻ' bên trong – một đứa trẻ dám mơ những giấc mơ lớn và dám sống trọn vẹn vì những gì mình yêu thích." },
 
     { group: 2, name: "Đào Khải Anh", role: "Tổ trưởng", img: "image/avatars/ĐKA.jpg", dob: "09/01/2008", keywords:["tiNtIN", "ADobe", "ciNeMA"], bio: "TÔI YÊU 12A2!!!" },
-    { group: 2, name: "Phạm Bảo Linh", role: "Sao đỏ", img: "image/avatars/PBL.jpg", dob: "03/11/2008", keywords:["Ấm áp", "Âm thầm", "Nghệ sĩ"], bio: "Mình là Bảo Linh, hay còn là 'blin ơi', 'ninh ơi', 'blu'…<br><br>Mình là một tâm hồn khao khát khám phá. Muốn đi nhiều nơi, gặp nhiều người, học thêm thật nhiều điều mới và cảm nhận hết những gì mình có thể. Mình biết ơn bản thân vì đã dám sống hết mình, dám thử những điều chưa từng, dám sai, dám đối diện cả những lúc bản thân yếu lòng và không hoàn hảo.<br><br>Mình rất trân trọng mỗi khi có 'quality time' bên người mình thương. Mình thích chụp lại những điều rất nhỏ trong đời (bởi z nên điện thoại 512gb mà hết 400gb hình rùi hihi). Để kể cho nghe 400gb đó có những gì nha:<br><br>Ba năm ở Hùng Vương trôi nhanh như một giấc mơ đẹp, nhưng mình đã kịp gói ghém vào đó rất nhiều 'kho báu' - Là A2K28, là The Clef, là HVC, CDTTBP, và hơn cả là những người anh, em, chị, bạn nơi đây. Mình được học, được sai, được sửa, được trưởng thành. Và hơn hết, mình đã tìm thấy những người bạn luôn ở bên, cổ vũ mình bước ra khỏi vùng an toàn, tiếp thêm sức mạnh mỗi khi mình chùn bước, và vực mình dậy mỗi khi sợ hãi lo âu bao quanh. Mình yêu mọi người nhiều lắm lắm, đặc biệt là A2 của mình. Cảm ơn lớp vì đã cùng mình đi qua ba năm rất rực rỡ, đã giúp mình trưởng thành hơn từng chút một, và song song với đó, A2 đã chữa lành mình từ những điều rất nhỏ thôi à.<br><br>Cảm ơn vì đã đi cùng nhau. Viết cũng đã dài, kết lại, mình mong rằng sau này dù đi đâu chăng nữa chúng mình vẫn sẽ luôn dõi về nhau nha. Mong cho mỗi chúng ta đều sẽ phát triển thật rực rỡ trên con đường riêng, mình tự hào về mọi người lắmm. I love all of you guys<br><br>'to a new chapter. may it be the best one written yet'" },
+    { group: 2, name: "Phạm Bảo Linh", role: "Sao đỏ", img: "image/avatars/PBL.jpg", dob: "03/11/2008", keywords:["Ấm áp", "Âm thầm", "Nghệ sĩ"], bio: "Mình là Bảo Linh, hay còn là 'blin ơi', 'ninh ơi', 'blu'…<br><br>Mình là một tâm hồn khao khát khám phá. Muốn đi nhiều nơi, gặp nhiều người, học thêm thật nhiều điều mới và cảm nhận hết những gì mình có thể. Mình biết ơn bản thân vì đã dám sống hết mình, dám thử những điều chưa từng, dám sai, dám đối diện cả những lúc bản thân yếu lòng và không hoàn hảo.<br><br>Mình rất trân trọng mỗi khi có 'quality time' bên người mình thương. Mình thích chụp lại những điều rất nhỏ trong đời (bởi z nên điện thoại 512gb mà hết 400gb hình rùi hihi). Để kể cho nghe 400gb đó có những gì nha:<br><br>Ba năm ở Hùng Vương trôi nhanh như một giấc mơ đẹp, nhưng mình đã kịp gói ghém vào đó rất nhiều 'kho báu' - Là A2K28, là The Clef, là HVC, CDTTBP, và hơn cả là những người anh, em, chị, bạn nơi đây. Mình được học, được sai, được sửa, được trưởng thành. Và hơn hết, mình đã tìm thấy những người bạn luôn ở bên, cổ vũ mình bước ra khỏi vùng an toàn, tiếp thêm sức mạnh mỗi khi mình chùn bước, và vực mình dậy mỗi khi sợ hãi lo âu bao quanh. Mình yêu mọi người nhiều lắm lắm, đặc biệt là A2 của mình. Cảm ơn lớp vì đã cùng mình đi qua ba năm rất rực rỡ, đã giúp mình trưởng thành hơn từng chút một, và song song với đó, A2 đã chữa lành mình từ những điều rất nhỏ thôi à.<br><br>Cảm ơn vì đã đi cùng nhau. Viết cũng đã dài, kết lại, mình mong rằng sau này dù đi đâu chăng nữa chúng mình vẫn sẽ luôn dõi về nhau nha. Mong cho mỗi chúnga đều sẽ phát triển thật rực rỡ trên con đường riêng, mình tự hào về mọi người lắmm. I love all of you guys<br><br>'to a new chapter. may it be the best one written yet'" },
     { group: 2, name: "Thái Trần Bảo Châu", role: "", img: "image/avatars/TTBC.jpg", dob: "26/11/2008", keywords:["điềm đạm", "chân thành", "hòa đồng"], bio: "Tui rất vui vì đã được là một phần của A2-K28. A2 đã đem đến cho tui những trải nghiệm mới mẻ và những kỉ niệm khó quên. Ở đây, tui không chỉ được học kiến thức mà còn học cách trưởng thành qua từng hoạt động, buổi học và kỉ niệm cùng thầy cô, bạn bè. Những lần cùng nhau cố gắng, cùng cười và cả những lúc chưa hoàn hảo đã giúp tui hiểu hơn về giá trị của sự đoàn kết và sẻ chia. Cảm ơn A2 đã xuất hiện trong hành trình phát triển của tui!" },
     { group: 2, name: "Hà Thị Ánh Dương", role: "", img: "image/avatars/HTÁD.jpg", dob: "27/01/2008", keywords:["Vui vẻ", "thân thiện"], bio: "Tui yêu 12A2 nhiều lắm, yêu theo cách mà mỗi lần nghĩ tới thôi tim cũng thấy ấm lại. Tui thật sự biết ơn, biết ơn rất nhiều vì được là một phần của 12A2, được học chung, cười chung, buồn chung và lớn lên cùng các bạn. Cảm ơn 12A2 vì đã cho tui những kỷ niệm đẹp đẽ, trong veo và dễ thương đến mức sau này nhớ lại chắc chắn sẽ mỉm cười. Những giờ học, những lần nói chuyện vu vơ, những tiếng cười trong lớp… tất cả đều là thanh xuân của tui.<br>Tui cũng muốn nói lời cảm ơn chính bản thân mình. Cảm ơn vì đã không bỏ cuộc, vì đã cố gắng từng ngày dù có lúc mệt mỏi, áp lực, muốn chuyển trường, muốn trốn đi đâu đó. Cảm ơn vì đã đủ mạnh mẽ để vượt qua peer pressure, vượt qua những ngày thấy mình lạc lõng và yếu đuối. Cảm ơn vì đã ở lại, đã kiên trì, để hôm nay có thể tự hào nhìn lại và nói rằng: “Mình đã làm được gòiiiii.”<br>12A2 không chỉ là một lớp học, mà là một phần ký ký ức, một phần thanh xuân, một phần trái tim của tui. Thật sự biết ơn và trân trọng vô cùng 💗💗💗" },
     { group: 2, name: "Phạm Đức Anh", role: "", img: "image/avatars/PĐA.jpg", dob: "28/10/2008", keywords:["Hiền lành", "tốt bụng", "hay lắng nghe"], bio: "Mình là một người luôn mang trong mình nhiều ước mơ và khát vọng. Hồi nhỏ, ước mơ của mình là trở thành một phi công, được bay trên bầu trời cao rộng và khám phá những vùng đất mới. Dù ước mơ ấy có thay đổi theo thời gian, nhưng nó đã nuôi dưỡng trong mình tinh thần dám nghĩ, dám ước và không ngừng cố gắng. Trên hành trình trưởng thành, mình đã trải qua nhiều kỉ niệm đáng nhớ, cả vui lẫn buồn. Những trải nghiệm ấy giúp mình học được cách mở lòng, tự tin hơn, biết lắng nghe và thấu hiểu bản thân cũng như mọi người xung quanh. Chính sự thay đổi trong suy nghĩ và thái độ sống đã giúp mình ngày càng hoàn thiện hơn so với trước kia." },
@@ -392,7 +397,6 @@ function createCard(data, index) {
     return container;
 }
 
-// KHẮC PHỤC RỦI RO KỸ THUẬT KHI XOAY MÀN HÌNH/RESIZE
 window.addEventListener('resize', () => {
     const currentIsMobile = window.innerWidth <= 768;
     
@@ -400,9 +404,9 @@ window.addEventListener('resize', () => {
         isMobileView = currentIsMobile;
         
         if (activeCard) {
-            isAnimating = false; // Mở khóa ép buộc
+            isAnimating = false; 
             closeCard();
-            overlay.classList.remove('active'); // Dọn dẹp ép buộc
+            overlay.classList.remove('active'); 
         }
         
         groupMusicObserver.disconnect();
@@ -413,16 +417,16 @@ window.addEventListener('resize', () => {
 });
 
 // ==========================================
-// --- INTERACTION LOGIC (FIX SPAM CLICK LỖI 1) ---
+// --- INTERACTION LOGIC (FIX SPAM CLICK) ---
 // ==========================================
 
 const overlay = document.getElementById('overlay');
 let activeCard = null;
 let placeholder = null; 
-let isAnimating = false; // CỜ CHỐNG SPAM CLICK
+let isAnimating = false; 
 
 function handleCardClick(card) {
-    if (isAnimating) return; // Khóa tương tác nếu thẻ đang bay ra/vào
+    if (isAnimating) return; 
 
     if (activeCard === card) {
         card.classList.toggle('is-flipped');
@@ -431,14 +435,13 @@ function handleCardClick(card) {
 
     if (activeCard) {
         closeCard();
-        // Tự động mở thẻ mới sau khi thẻ cũ đóng xong (650ms để an toàn)
         setTimeout(() => {
             if (!isAnimating) handleCardClick(card);
         }, 650);
         return;
     }
 
-    isAnimating = true; // Khóa
+    isAnimating = true; 
     isCardOpened = true; 
     fadeVolume(groupAudioPlayer, 0, 300, () => groupAudioPlayer.pause());
 
@@ -474,7 +477,6 @@ function handleCardClick(card) {
 
     startDisk(card);
 
-    // Mở khóa sau khi transition CSS hoàn tất
     setTimeout(() => {
         isAnimating = false;
     }, 650);
@@ -524,9 +526,9 @@ function toggleDiskState(container, body) {
 }
 
 function closeCard() {
-    if (!activeCard || isAnimating) return; // Nếu đang hoạt ảnh đóng/mở thì chặn
+    if (!activeCard || isAnimating) return; 
 
-    isAnimating = true; // Khóa
+    isAnimating = true; 
 
     if (diskTimeout) clearTimeout(diskTimeout);
     audioPlayer.pause();
@@ -565,7 +567,7 @@ function closeCard() {
     const currentCard = activeCard;
     const currentPlaceholder = placeholder;
 
-    activeCard = null; // Trả về null ngay để logic khóa được giải phóng đúng chuẩn
+    activeCard = null; 
     placeholder = null;
 
     setTimeout(() => {
@@ -586,7 +588,7 @@ function closeCard() {
         void currentCard.offsetWidth;
         currentCard.style.transition = '';
 
-        isAnimating = false; // Mở khóa
+        isAnimating = false; 
     }, 600); 
 }
 
@@ -615,7 +617,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mm.add("(max-width: 768px)", () => {
         gsap.to(".cover-container", {
             scrollTrigger: { trigger: "body", start: "top top", end: "300px", scrub: 1 },
-            height: "280px", ease: "none" /* Cho nó thu từ 380px xuống 280px khi lướt tạo hiệu ứng đẹp */
+            height: "280px", ease: "none"
         });
     });
 });
@@ -699,11 +701,11 @@ function createBottomNav() {
             e.preventDefault();
             const section = document.getElementById(`group-${groupNum}`);
             if (section) {
-                // Đo chiều cao thực tế của Header (dù là PC hay Mobile) và cộng thêm 15px để cách lề cho thoáng
                 const header = document.querySelector('.site-header');
                 const headerHeight = header ? header.offsetHeight : 90;
                 
-                const y = section.getBoundingClientRect().top + window.pageYOffset - headerHeight - 15;
+                // Cập nhật tính toán y (Đã xóa khoảng trừ dư thừa -15 giúp viewport khít mép lề phần tử)
+                const y = section.getBoundingClientRect().top + window.pageYOffset - headerHeight;
                 window.scrollTo({ top: y, behavior: 'smooth' });
             }
         });
@@ -750,7 +752,6 @@ function checkDarkModeForElement(el) {
     }
 }
 
-// KHẮC PHỤC LỖI 2 - THANH ĐIỀU HƯỚNG MOBILE NHẬN DIỆN CHUẨN XÁC HƠN
 function updateBottomNav() {
     const nav = document.querySelector('.bottom-nav-container');
     const prompt = document.querySelector('.audio-prompt');
@@ -772,21 +773,18 @@ function updateBottomNav() {
     let activeGroup = null;
     let maxVisibleArea = 0;
     
-    // Tính toán xem section nào đang hiển thị và chiếm nhiều diện tích trên màn hình nhất
     groups.forEach(group => {
         const rect = group.getBoundingClientRect();
         const visibleTop = Math.max(0, rect.top);
         const visibleBottom = Math.min(window.innerHeight, rect.bottom);
         const visibleHeight = Math.max(0, visibleBottom - visibleTop);
 
-        // Chỉ highlight nếu khối đó chiếm tối thiểu 10% màn hình
         if (visibleHeight > maxVisibleArea && visibleHeight > window.innerHeight * 0.1) {
             maxVisibleArea = visibleHeight;
             activeGroup = group.getAttribute('data-group');
         }
     });
 
-    // Ép buộc chuyển qua tổ 5 nếu đã cuộn đến sát đáy trang web
     const scrollHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
     const currentScroll = window.innerHeight + window.scrollY;
 
@@ -795,9 +793,31 @@ function updateBottomNav() {
     }
 
     document.querySelectorAll('.bottom-nav-item').forEach(item => {
-        item.classList.remove('active'); // Luôn xóa trước để tránh trùng lặp
+        item.classList.remove('active'); 
         if (activeGroup && item.getAttribute('href') === `#group-${activeGroup}`) {
             item.classList.add('active');
         }
     });
 }
+
+// ==========================================
+// --- TẠM DỪNG VIDEO COVER KHI KHUẤT TẦM NHÌN ---
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    const coverVideo = document.querySelector('.cover-image');
+    const coverContainer = document.querySelector('.cover-container');
+    
+    if (coverVideo && coverContainer) {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    coverVideo.play().catch(e => console.log("Lỗi autoplay video:", e));
+                } else {
+                    coverVideo.pause(); // Video tự động dừng khi kéo màn hình xuống Tổ 1
+                }
+            });
+        }, { threshold: 0.05 }); 
+        
+        videoObserver.observe(coverContainer);
+    }
+});
