@@ -648,9 +648,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================
-// --- LOADING SCREEN LOGIC ---
+// --- WELCOME & LOADING SCREEN LOGIC ---
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const btnContinue = document.getElementById('btn-continue');
+    const btnLeave = document.getElementById('btn-leave');
+    
     const loadingScreen = document.getElementById('loading-screen');
     const progressText = document.getElementById('loading-progress');
     const loadingVideo = document.getElementById('loading-video');
@@ -661,31 +665,78 @@ document.addEventListener("DOMContentLoaded", () => {
         loadingVideo.playbackRate = 1.2; 
     }
 
-    let currentProgress = 0;
-    const updateInterval = setInterval(() => {
-        let step = Math.floor(Math.random() * 6) + 1; 
-        currentProgress += step;
-
-        if (currentProgress >= 100) {
-            currentProgress = 100;
-            clearInterval(updateInterval);
-            finishLoading();
+    // Đếm ngược 5 giây cho nút Tiếp tục
+    let countdown = 5;
+    const countdownInterval = setInterval(() => {
+        countdown--;
+        if (countdown > 0) {
+            btnContinue.innerText = `Tiếp tục (${countdown})`;
+        } else {
+            clearInterval(countdownInterval);
+            btnContinue.innerText = `Tiếp tục`;
+            btnContinue.disabled = false;
         }
-        
-        progressText.innerText = currentProgress + "%";
-    }, 100); 
+    }, 1000);
 
-    function finishLoading() {
+    // Xử lý nút Rời khỏi (Crash web)
+    btnLeave.addEventListener('click', () => {
+        document.body.innerHTML = `
+            <div style="height: 100vh; width: 100vw; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ff3333; font-family: monospace; z-index: 9999999; position: fixed; top: 0; left: 0;">
+                <h1 style="font-size: 3rem; margin-bottom: 20px; text-shadow: 0 0 10px #ff3333;">FATAL ERROR</h1>
+                <p style="font-size: 1.2rem; color: #fff;">Connection terminated. Memories wiped.</p>
+            </div>
+        `;
+        document.head.innerHTML = '';
+        window.stop();
+        throw new Error("User initiated self-destruct sequence.");
+    });
+
+    // Xử lý nút Tiếp tục
+    btnContinue.addEventListener('click', () => {
+        welcomeScreen.classList.add('hidden');
+        
+        // Bắt đầu phát video loading
+        if (loadingVideo) {
+            loadingVideo.play().catch(e => console.log("Lỗi play video loading:", e));
+        }
+
+        // Chạy thanh tiến trình loading
+        startLoadingProcess();
+
         setTimeout(() => {
-            loadingScreen.classList.add('hidden');
-            document.body.classList.remove('no-scroll'); 
+            if (welcomeScreen.parentNode) {
+                welcomeScreen.parentNode.removeChild(welcomeScreen);
+            }
+        }, 600);
+    });
+
+    function startLoadingProcess() {
+        let currentProgress = 0;
+        const updateInterval = setInterval(() => {
+            let step = Math.floor(Math.random() * 6) + 1; 
+            currentProgress += step;
+
+            if (currentProgress >= 100) {
+                currentProgress = 100;
+                clearInterval(updateInterval);
+                finishLoading();
+            }
             
+            progressText.innerText = currentProgress + "%";
+        }, 100); 
+
+        function finishLoading() {
             setTimeout(() => {
-                if (loadingScreen.parentNode) {
-                    loadingScreen.parentNode.removeChild(loadingScreen);
-                }
-            }, 800); 
-        }, 400);
+                loadingScreen.classList.add('hidden');
+                document.body.classList.remove('no-scroll'); 
+                
+                setTimeout(() => {
+                    if (loadingScreen.parentNode) {
+                        loadingScreen.parentNode.removeChild(loadingScreen);
+                    }
+                }, 800); 
+            }, 400);
+        }
     }
 });
 

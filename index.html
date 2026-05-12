@@ -17,13 +17,27 @@
 <body>
 
 <!-- ==========================================
+         WELCOME SCREEN 
+         ========================================== -->
+    <div id="welcome-screen">
+        <div class="welcome-box">
+            <h2>LỜI NHẮN NHỦ</h2>
+            <p>Dù chứa đựng nhiều tâm huyết, một trang web số hóa khó có thể thay thế trọn vẹn giá trị tinh thần và cảm xúc chân thật của một cuốn kỷ yếu vật lý trao tay. Không gian này được tạo ra không hẳn để lưu giữ mãi mãi thanh xuân, mà chỉ như một trạm dừng chân nhỏ để chúng ta cùng nhìn lại chặng đường rực rỡ đã qua.</p>
+            <p>Bạn có muốn tiếp tục không?</p>
+            <div class="welcome-buttons">
+                <button id="btn-leave">Rời khỏi</button>
+                <button id="btn-continue" disabled>Tiếp tục (5)</button>
+            </div>
+        </div>
+    </div>
+
+<!-- ==========================================
          LOADING SCREEN 
          ========================================== -->
     <div id="loading-screen">
         <video 
           id="loading-video"
           src="image/covers/cover_class_wait.mp4" 
-          autoplay 
           muted 
           playsinline>
         </video>

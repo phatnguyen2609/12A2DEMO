@@ -949,6 +949,122 @@ a, button, .nav-link, .card-container, .disk-body, .feedback-btn {
 }
 
 /* ==========================================
+   --- WELCOME SCREEN STYLES --- 
+   ========================================== */
+#welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 9999999; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#welcome-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.welcome-box {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 480px;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: welcomePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.welcome-box h2 {
+    font-family: 'Lexend', sans-serif;
+    color: #1e293b;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.welcome-box p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #475569;
+    margin-bottom: 20px;
+}
+
+.welcome-box p:last-of-type {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.welcome-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.welcome-buttons button {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    min-width: 130px;
+}
+
+#btn-leave {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+#btn-leave:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+#btn-continue {
+    background: #3b82f6;
+    color: #ffffff;
+}
+
+#btn-continue:hover:not(:disabled) {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+#btn-continue:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+@keyframes welcomePop {
+    0% { transform: scale(0.9) translateY(20px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .welcome-box { padding: 30px 20px; }
+    .welcome-box h2 { font-size: 20px; }
+    .welcome-box p { font-size: 14px; }
+    .welcome-buttons { flex-direction: column-reverse; gap: 12px; }
+    .welcome-buttons button { width: 100%; padding: 14px; }
+}
+
+/* ==========================================
    --- AUDIO PROMPT (NÚT GỢI Ý BẬT NHẠC) --- 
    ========================================== */
 .audio-prompt {
